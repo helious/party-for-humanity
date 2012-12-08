@@ -33,4 +33,7 @@ class StaticController < ApplicationController
   def privacy
   end
   
+  def contact
+  end
+  
 end
