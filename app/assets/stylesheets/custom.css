@@ -78,7 +78,8 @@ b {
 }
 
 .header-container {
-	background: #FFF;
+/* 	background: #FFF; */
+	background: none;
 }
 
 .footer-container,

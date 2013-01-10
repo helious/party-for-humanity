@@ -1,4 +1,6 @@
 /*
+ *= require normalize
+ *= require main
  *= require_self
  *= require_tree .
  */

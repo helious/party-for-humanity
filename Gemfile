@@ -1,23 +1,12 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.8'
+gem 'rails', '3.2.9.rc3'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-group :production do
-  gem 'pg'
-  #gem 'rack-ssl-enforcer'
-end
 
-group :test, :development do
-  gem 'sqlite3' 
-  #gem 'turn', '0.8.2', :require => false
-  
-  # start capybara gem includes
-  # gem 'rspec-rails'
-  # gem 'capybara', :git => 'git://github.com/jnicklas/capybara.git'
-  # gem 'launchy'
-end
+gem 'sqlite3'
+
 
 # Gems used only for assets and not required
 # in production environments by default.
