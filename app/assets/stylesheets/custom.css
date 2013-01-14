@@ -91,8 +91,16 @@ b {
 	margin: .67em 0;
 	
     color: #f16529;
-    text-align: center;
+    text-align: center;    
 }
+
+	.title .thumb {
+		height: 1.5em;
+	}
+
+	.title .logo {
+		display: none;
+	}
 
 /* ==========================================================================================
    MOBILE
@@ -353,6 +361,17 @@ body {
         margin: .5em 0;
         font-size: 1.8em;
     }
+
+	.title .thumb, .title a > span {
+		display: none;
+	}
+
+	.title .logo {
+		display: block;
+		max-width: 100%;
+		max-height: 7.2em;
+		margin: 0 auto;
+	}
 
 /*
     nav {
