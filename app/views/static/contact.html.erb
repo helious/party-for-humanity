@@ -9,12 +9,13 @@
   <p>
     "Never doubt that a small group of thoughtful, committed citizens can change the world. Indeed, it is the only thing that ever has." - Margaret Mead
   </p>
-  <form method="post" id="message-form">
-    <input type="text" id="name" placeholder="Enter your name here..." />
-    <input type="email" id="email" placeholder="...type your e-mail here..." />
-    <textarea type="text" id="message" placeholder="...and then share a message with us!" ></textarea>
-    <input type="submit" value="Share" id="submit" />
-  </form>
+  <%= form_tag url_for(send_message_path), :method => 'post', :id => 'message-form' do %>
+    <%= text_field_tag :name, params[:name].decode, :placeholder => 'Enter your name here...', :id => 'name' %>
+    <%= text_field_tag :email, params[:email].decode, :placeholder => '...type your e-mail here...', :id => 'email' %>
+    <%= text_area_tag :body, params[:body].decode, :placeholder => '...and then share a message with us!', :id => 'message' %>
+    <%= hidden_field_tag :is_charity_suggestion, request.url.include?('suggest') %> 
+    <%= submit_tag 'Share', :id => 'submit' %>
+  <% end %>
 </div>
 
 <style>

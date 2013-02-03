@@ -8,11 +8,14 @@
     <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
     <%= favicon_link_tag 'favicon.ico' %>
- 	<link href='http://fonts.googleapis.com/css?family=Montserrat+Alternates:400,700|Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+ 	  <link href='http://fonts.googleapis.com/css?family=Montserrat+Alternates:400,700|Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
     <link rel="canonical" href="http://www.partyforhumanity.org" />
  </head>
   <body>
     <%= render 'layouts/header' %>
+    <% flash.each do |name, message| %>
+      <%= content_tag :div, message, :id => name %>
+    <% end %>
     <%= yield %>
     <%= render 'layouts/footer' %>
   </body>
