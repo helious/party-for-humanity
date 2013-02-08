@@ -1,5 +1,3 @@
-require 'CGI'
-
 class String
 
   def encode_for_urls
