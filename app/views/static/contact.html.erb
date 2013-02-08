@@ -1,84 +1,17 @@
-<div class="main wrapper clearfix">
-  <h1>
-    <% if request.url.include? 'suggest' %>
-    Suggest A Charity
-    <% else %>
-    Share Your Stories
-    <% end %>
-  </h1>
-  <p>
-    "Never doubt that a small group of thoughtful, committed citizens can change the world. Indeed, it is the only thing that ever has." - Margaret Mead
-  </p>
-  <%= form_tag url_for(send_message_path), :method => 'post', :id => 'message-form' do %>
-    <%= text_field_tag :name, params[:name].decode, :placeholder => 'Enter your name here...', :id => 'name' %>
-    <%= text_field_tag :email, params[:email].decode, :placeholder => '...type your e-mail here...', :id => 'email' %>
-    <%= text_area_tag :body, params[:body].decode, :placeholder => '...and then share a message with us!', :id => 'message' %>
-    <%= hidden_field_tag :is_charity_suggestion, request.url.include?('suggest') %> 
-    <%= submit_tag 'Share', :id => 'submit' %>
+<h1>
+  <% if request.url.include? 'suggest' %>
+  Suggest A Charity
+  <% else %>
+  Share Your Stories
   <% end %>
-</div>
-
-<style>
-  #message {
-    height: 10em;
-    width: 100%;
-    max-width: 100%;
-  }
-  
-  #message-form {
-    float: left;
-    width: 100%;
-  }
-  
-  #submit {
-    float: left;
-    background-color: #44BDBE;
-    color: #FFF;
-    background-image: -moz-linear-gradient(center top , #44BDBE, #44BDBE);
-    border: 1px solid #44BDBE;
-    border-radius: 2px 2px 2px 2px;
-    display: inline-block;
-    font-weight: bold;
-    height: 2.25em;
-    line-height: 1.5em;
-    min-width: 64px;
-    font-family: 'Montserrat Alternates', sans-serif;
-    clear: left;
-  }
-
-  input[type="text"], input[type="email"], textarea {
-    float: left;
-    width: 50%;
-    margin: 0 0 1em;
-    line-height: 1.5em;
-    height: 1.5em;
-    padding-left: 0.65%;
-    clear: left;
-    min-width: 178px;
-    max-width: 356px;
-  }
-
-  ::-webkit-input-placeholder {
-    color: #999;
-    font-style: italic;
-    padding-left: 0.65%;
-  }
-
-  :-moz-placeholder {
-    color: #999;
-    font-style: italic;
-    padding-left: 0.65%;
-  }
-
-  ::-moz-placeholder {
-    color: #999;
-    font-style: italic;
-    padding-left: 0.65%;
-  }
-
-  :-ms-input-placeholder {
-    color: #999;
-    font-style: italic;
-    padding-left: 0.65%;
-  }
-</style>
+</h1>
+<p>
+  "Never doubt that a small group of thoughtful, committed citizens can change the world. Indeed, it is the only thing that ever has." - Margaret Mead
+</p>
+<%= form_tag url_for(send_message_path), :method => 'post', :id => 'message-form' do %>
+  <%= text_field_tag :name, params[:name].decode_from_urls, :placeholder => 'Enter your name here...', :id => 'name' %>
+  <%= text_field_tag :email, params[:email].decode_from_urls, :placeholder => '...type your e-mail here...', :id => 'email' %>
+  <%= text_area_tag :body, params[:body].decode_from_urls, :placeholder => '...and then share a message with us!', :id => 'message' %>
+  <%= hidden_field_tag :is_charity_suggestion, request.url.include?('suggest') %> 
+  <%= submit_tag 'Share', :id => 'submit' %>
+<% end %>

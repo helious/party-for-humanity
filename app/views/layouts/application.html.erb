@@ -5,18 +5,27 @@
       Party for Humanity, Inc.
     </title>
     <%= stylesheet_link_tag 'application', :media => 'all' %>
+    <%= stylesheet_link_tag params[:controller], :media => 'all' %>
     <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
     <%= favicon_link_tag 'favicon.ico' %>
- 	  <link href='http://fonts.googleapis.com/css?family=Montserrat+Alternates:400,700|Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+ 	  <%= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Montserrat+Alternates:400,700|Open+Sans:400,300,600,700', :media => 'all' %>
     <link rel="canonical" href="http://www.partyforhumanity.org" />
  </head>
   <body>
+    <%= render 'layouts/login' %>
     <%= render 'layouts/header' %>
-    <% flash.each do |name, message| %>
-      <%= content_tag :div, message, :id => name %>
-    <% end %>
-    <%= yield %>
+    <div class="main-container">
+      <div class="main wrapper clearfix">
+        <% flash.each do |name, message| %>
+          <%= content_tag :div, :id => name do %>
+            <%= image_tag "#{name}.jpg" %>
+            <span><%= message %></span>
+          <% end %>
+        <% end %>
+        <%= yield %>
+      </div>
+    </div>
     <%= render 'layouts/footer' %>
   </body>
 </html>

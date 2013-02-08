@@ -12,7 +12,7 @@ class MessagesController < ApplicationController
 
 			params.delete :is_charity_suggestion
 
-			redirect_to (params[:is_charity_suggestion] ? share_path(:params => params.encode) : suggest_path(:params => params.encode))
+			redirect_to (params[:is_charity_suggestion] ? share_path(:params => params.encode_values_for_urls) : suggest_path(:params => params.encode_values_for_urls))
 	#	rescue => e
 	#		flash[:notice] = 'What are you trying to do?'
 

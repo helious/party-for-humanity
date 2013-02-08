@@ -1,10 +1,6 @@
 class NilClass
 
-	def encode
-
-	end
-
-	def decode
+	def decode_from_urls
 
 	end
 
