@@ -18,7 +18,7 @@ PartyForHumanity::Application.configure do
   config.assets.compile = false
 
 
-  config.sass.load_paths += [config.root.join('app', 'assets', 'stylesheets')]
+  config.assets.precompile += %w( *.js *.css )
   # Generate digests for assets URLs
   config.assets.digest = true
 
