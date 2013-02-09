@@ -1,0 +1,9 @@
+<div class="charity">
+	<a class="name">
+		<%= charity.name %>
+	</a>
+	<div class="description off">
+		<%= charity.description %>
+	</div>
+	<%= link_to "Learn more about #{charity.name}", charity.website, :target => '_blank', :class => 'off website' %>
+</div>

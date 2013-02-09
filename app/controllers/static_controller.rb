@@ -8,6 +8,7 @@ class StaticController < ApplicationController
   end
   
   def choose
+    @charities = Charity.all
   end
   
   def organize

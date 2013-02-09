@@ -1,1 +1,29 @@
-<h1>Choose a Charity</h1>
+<h1>Choose A Charity</h1>
+<p>Whether you're interested in sports or health care, hunger or world peace, you and your guests can make a difference by donating to one of the groups described on this page. Some of the groups work abroad. Some of them work in your neighborhood. All of them are helping to change the world in a positive way.</p>
+<h2>Charities</h2>
+<%= render :partial => 'charity/charity', :collection => @charities, :as => :charity %>
+<%= link_to 'Suggest A Charity', suggest_path %> |
+<%= link_to 'Organize A Party', organize_path %>
+
+<style>
+	.off {
+		display: none;
+	}
+
+	.charity {
+		margin: 0 0 1em 0;
+	}
+
+	.charity .name {
+		cursor: pointer;
+		font-size: 1.5em;
+	}
+</style>
+
+<script>
+	$(function() {
+		$('.charity .name').on('click', function(e) {
+			$(this).parent().children('.description, .website').toggleClass('off');
+		});
+	});
+</script>
