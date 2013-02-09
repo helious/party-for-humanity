@@ -5,7 +5,7 @@
       Party for Humanity, Inc.
     </title>
     <%= stylesheet_link_tag 'application', :media => 'all' %>
-    <%= stylesheet_link_tag params[:controller], :media => 'all' %>
+    <%= stylesheet_link_tag params[:controller], :media => 'all' unless Rails.application.assets.find_asset("#{params[:controller]}.css").nil? %>
     <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
     <%= favicon_link_tag 'favicon.ico' %>
