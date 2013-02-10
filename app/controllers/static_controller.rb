@@ -13,7 +13,8 @@ class StaticController < ApplicationController
     @charity_categories = [['...or choose a category!', '']]
 
     @charities.each do |charity|
-      @charity_categories << [charity.category, charity.category]
+      charity_option = [charity.category, charity.category]
+      @charity_categories << [charity.category, charity.category] unless @charity_categories.include?(charity_option)
     end
   end
   
