@@ -16,4 +16,5 @@ PartyForHumanity::Application.routes.draw do
   match '/suggest' => 'static#contact', :as => :suggest
 
   post '/message' => 'messages#create', :as => :send_message
+  post '/choose' => 'static#choose', :as => :search_charities
 end

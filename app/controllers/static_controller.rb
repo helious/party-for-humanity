@@ -8,7 +8,13 @@ class StaticController < ApplicationController
   end
   
   def choose
-    @charities = Charity.all
+    @charities = Charity.where '(name LIKE :name or description LIKE :name) and category LIKE :category', { :name => "%#{params[:keyword]}%", :category => "%#{params[:category]}%" }
+    
+    @charity_categories = [['...or choose a category!', '']]
+
+    @charities.each do |charity|
+      @charity_categories << [charity.category, charity.category]
+    end
   end
   
   def organize
