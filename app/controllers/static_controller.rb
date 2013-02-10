@@ -8,11 +8,11 @@ class StaticController < ApplicationController
   end
   
   def choose
-    @charities = Charity.where '(name LIKE :name or description LIKE :name) and category LIKE :category', { :name => "%#{params[:keyword]}%", :category => "%#{params[:category]}%" }
+    @charities = Charity.where '(LOWER(name) LIKE :name or LOWER(description) LIKE LOWER(:name)) and category LIKE :category', { :name => "%#{params[:keyword]}%", :category => "%#{params[:category]}%" }
     
     @charity_categories = [['...or choose a category!', '']]
 
-    @charities.each do |charity|
+    Charity.all.each do |charity|
       charity_option = [charity.category, charity.category]
       @charity_categories << [charity.category, charity.category] unless @charity_categories.include?(charity_option)
     end
