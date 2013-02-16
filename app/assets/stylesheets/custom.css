@@ -369,7 +369,7 @@ body {
 	.title .logo {
 		display: block;
 		max-width: 100%;
-		max-height: 7.2em;
+		max-height: 5.4em;
 		margin: 0 auto;
 	}
 
@@ -427,6 +427,7 @@ body {
 	
 	.main.wrapper {
 		width: auto;
+		max-width: 42em;
 		margin-left: 30%;
 	}
 
