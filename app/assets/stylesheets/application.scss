@@ -45,7 +45,7 @@
 	padding-left: 0.65%;
 }
 
-input[type="text"], input[type="email"], textarea {
+input[type="text"], input[type="email"], input[type="password"], textarea {
 	float: left;
 	width: 50%;
 	margin: 0 0 1em;
@@ -76,4 +76,9 @@ input[type="text"], input[type="email"], textarea {
 form {
 	float: left;
 	width: 100%;
+
+	div {
+		float: left;
+		clear: left;
+	}
 }

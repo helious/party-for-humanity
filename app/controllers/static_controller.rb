@@ -46,7 +46,6 @@ class StaticController < ApplicationController
   end
 
   def account
-    @profile = current_user.profile
   end
   
 end
