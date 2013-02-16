@@ -1,7 +1,7 @@
 <% if user_signed_in? %>
 	<div id="login">
 		<%= "Hello,  #{current_user.email}!" %>
-		<%= link_to 'Logout', destroy_user_session_path, :method => 'delete' %>
+		<%= link_to 'Your Account', my_account_path %>|<%= link_to 'Logout', destroy_user_session_path, :method => 'delete' %>
 	</div>
 <% elsif params[:action] != 'new' && params[:controller] != 'devise/sessions' %>
 	<div id="login">

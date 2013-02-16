@@ -1,0 +1,13 @@
+<h1>Editing Your Profile</h1>
+<%= form_tag do %>
+	<div>
+		<%= text_field_tag :username, @profile.username, :placeholder => 'Add a Username...' %>
+	</div>
+	<div>
+		<%= text_field_tag :name, @profile.name, :placeholder => 'Add your Name...' %>
+	</div>
+	<div>
+		<%= text_field_tag :zipcode, @profile.zipcode, :placeholder => 'Add your Zip Code...' %>
+	</div>
+	<%= submit_tag 'Update', :id => 'submit' %>
+<% end %>

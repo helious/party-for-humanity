@@ -14,7 +14,11 @@ PartyForHumanity::Application.routes.draw do
   match '/privacy' => 'static#privacy', :as => :privacy
   match '/share' => 'static#contact', :as => :share
   match '/suggest' => 'static#contact', :as => :suggest
+  match '/account' => 'static#account', :as => :my_account
 
   post '/message' => 'messages#create', :as => :send_message
+
+  match '/profile/edit' => 'profile#edit', :as => :edit_profile
+
   post '/choose' => 'static#choose', :as => :search_charities
 end

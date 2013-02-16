@@ -1,0 +1,13 @@
+<div>
+	<%= raw "Username: #{@profile.blank? | @profile.username.blank? ? link_to('Add Username', edit_profile_path) : @profile.username}" %>
+</div>
+<div>
+	<%= raw "Name: #{@profile.blank? | @profile.name.blank? ? link_to('Add Name', edit_profile_path) : @profile.name}" %>
+</div>
+<div>
+	<%= "E-mail: #{current_user.email}" %>
+</div>
+<div>
+	<%= raw "Zip: #{@profile.blank? | @profile.zipcode.blank? ? link_to('Add Zip', edit_profile_path) : @profile.zipcode}" %>
+</div>
+<%= link_to 'Edit Profile', edit_profile_path %>

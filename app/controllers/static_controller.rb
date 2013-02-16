@@ -1,5 +1,5 @@
 class StaticController < ApplicationController
-  before_filter :authenticate_user!, :only => :organize
+  before_filter :authenticate_user!, :only => [ :organize, :account ]
 
   def home
   end
@@ -43,6 +43,10 @@ class StaticController < ApplicationController
   end
   
   def contact
+  end
+
+  def account
+    @profile = current_user.profile
   end
   
 end

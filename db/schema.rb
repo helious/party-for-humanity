@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130209091716) do
+ActiveRecord::Schema.define(:version => 20130216210528) do
 
   create_table "charities", :force => true do |t|
     t.string "name"
@@ -26,6 +26,13 @@ ActiveRecord::Schema.define(:version => 20130209091716) do
     t.text    "body"
     t.boolean "sent",                  :default => false
     t.boolean "is_charity_suggestion"
+  end
+
+  create_table "profiles", :force => true do |t|
+    t.string  "username"
+    t.string  "name"
+    t.text    "zipcode"
+    t.integer "user_id"
   end
 
   create_table "users", :force => true do |t|
