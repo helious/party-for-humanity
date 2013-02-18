@@ -5,13 +5,21 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
   after_save :create_profile
   has_one :profile
+  accepts_nested_attributes_for :profile
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :profile_attributes
   # attr_accessible :title, :body
 
-  def create_profile
-  	self.profile = Profile.new({ :username => '', :name => '', :zipcode => '' })
-  	self.profile.save
+  def self.find_for_database_authentication(conditions={})
+    self.where("id = ?", Profile.where("username = ?", conditions[:email]).limit(1).first.user_id).limit(1).first || self.where("email = ?", conditions[:email]).limit(1).first
   end
+
+  def create_profile
+    if self.profile.nil?
+      self.profile = Profile.new({ :username => '', :name => '', :zipcode => '' })
+      self.profile.save
+    end
+  end
+
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130216210528) do
+ActiveRecord::Schema.define(:version => 20130218044717) do
 
   create_table "charities", :force => true do |t|
     t.string "name"
@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(:version => 20130216210528) do
     t.text    "zipcode"
     t.integer "user_id"
   end
+
+  add_index "profiles", ["username"], :name => "index_profiles_on_username", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

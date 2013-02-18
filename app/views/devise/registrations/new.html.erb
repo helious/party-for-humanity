@@ -1,0 +1,46 @@
+<h2>Join Us!</h2>
+
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+	<%= devise_error_messages! %>
+	<div class="left">
+		<h3>This Is What We Need...</h3>
+		<div>
+			<%= f.label :email %>
+			<br />
+			<%= f.email_field :email, :autofocus => true %>
+		</div>
+		<div>
+			<%= f.label :password %>
+			<br />
+			<%= f.password_field :password %>
+		</div>
+		<div>
+			<%= f.label :password_confirmation %>
+			<br />
+			<%= f.password_field :password_confirmation %>
+		</div>
+	</div>
+	<div class="right">
+		<h3>...And These Are Optional!</h3>
+		<%= f.fields_for :profile_attributes do |pf| %>
+		<div>
+			<%= pf.label :username %>
+			<br />
+			<%= pf.text_field :username %>
+		</div>
+		<div>
+			<%= pf.label :name %>
+			<br />
+			<%= pf.text_field :name %>
+		</div>
+		<div>
+			<%= pf.label :zipcode %>
+			<br />
+			<%= pf.text_field :zipcode %>
+		</div>
+		<% end %>
+	</div>
+	<%= f.submit "Sign up", :id => 'submit' %>
+<% end %>
+
+<%= render "devise/shared/links" %>
