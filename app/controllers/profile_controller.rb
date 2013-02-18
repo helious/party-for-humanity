@@ -7,7 +7,7 @@ class ProfileController < ApplicationController
 			@profile.name = params[:name]
 			@profile.zipcode = params[:zipcode]
 
-			@profile.save
+			redirect_to my_account_path if @profile.save
 		end
 	end
 
