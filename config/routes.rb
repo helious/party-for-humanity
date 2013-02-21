@@ -15,6 +15,7 @@ PartyForHumanity::Application.routes.draw do
   match '/share' => 'static#contact', :as => :share
   match '/suggest' => 'static#contact', :as => :suggest
   match '/account' => 'static#account', :as => :my_account
+  match '/party' => 'static#party', :as => :party
 
   post '/message' => 'messages#create', :as => :send_message
 

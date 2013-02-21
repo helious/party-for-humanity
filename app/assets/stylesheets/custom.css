@@ -285,6 +285,45 @@ b {
 	footer p {
 		line-height: 1.4;
 	}
+	
+	header.banner {
+		height: 9em;
+/* 		margin-bottom: 1.5em; */
+		background: #666;
+		-webkit-border-radius: .72em .72em 0 0;
+		-moz-border-radius: .72em .72em 0 0;
+		border-radius: .72em .72em 0 0;
+		background: url('http://farm3.staticflickr.com/2700/5757967525_34e8b52556_o.jpg') top center;
+		background-size: 100% auto;
+	}
+	
+		.banner .profile {
+			float: left;
+			height: 7.2em;
+			width: 7.2em;
+			margin-top: 4.3em;
+			margin-left: 1.4em;
+			-webkit-border-radius: 5em;
+			-moz-border-radius: 5em;
+			border-radius: 5em;
+			border: .7em solid #F5F5F5;
+		}
+	
+	.summary {
+		background: #F5F5F5;
+		padding: 0 1.2em 1em; 
+	}
+	
+		.summary h2 {
+			margin: 0;
+		}
+		
+		.summary small {
+			font-weight: 600;
+			line-height: 1;
+			color: #999;
+			text-transform: uppercase;
+		}
 
 /* ==========================================================================================
    INTERMEDIATE

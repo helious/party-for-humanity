@@ -48,4 +48,7 @@ class StaticController < ApplicationController
   def account
   end
   
+  def party
+  end
+  
 end
