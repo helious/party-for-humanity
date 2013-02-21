@@ -1,0 +1,41 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>
+Created by FontForge 20100429 at Wed Feb 20 04:28:00 2013
+ By root
+Copyright (C) 2012 by original authors @ fontello.com
+</metadata>
+<defs>
+<font id="fontello" horiz-adv-x="364" >
+  <font-face 
+    font-family="fontello"
+    font-weight="500"
+    font-stretch="normal"
+    units-per-em="1000"
+    panose-1="2 0 6 3 0 0 0 0 0 0"
+    ascent="850"
+    descent="-150"
+    bbox="0 -119 938 819"
+    underline-thickness="50"
+    underline-position="-100"
+    unicode-range="U+23F2-1F4C5"
+  />
+<missing-glyph 
+d="M33 0v666h265v-666h-265zM66 33h199v600h-199v-600z" />
+    <glyph glyph-name=".notdef" 
+d="M33 0v666h265v-666h-265zM66 33h199v600h-199v-600z" />
+    <glyph glyph-name=".null" horiz-adv-x="0" 
+ />
+    <glyph glyph-name="nonmarkingreturn" horiz-adv-x="333" 
+ />
+    <glyph glyph-name="uni23F2" unicode="&#x23f2;" horiz-adv-x="938" 
+d="M0 350q0 99 38.5 185.5t98.5 146.5t146.5 98.5t185.5 38.5t185.5 -38.5t146.5 -98.5t98.5 -146.5t38.5 -185.5t-38.5 -185.5t-98.5 -146.5t-146.5 -98.5t-185.5 -38.5t-185.5 38.5t-146.5 98.5t-98.5 146.5t-38.5 185.5zM117 350q0 -101 49 -180.5t126 -123.5
+q84 -48 177 -48q101 0 180.5 49t123.5 126q47 82 47 177q0 100 -49.5 180t-125.5 124q-84 48 -176 48q-146 0 -249 -103t-103 -249zM410 350v225q0 24 17.5 41t41.5 17t41 -17t17 -41v-201l142 -141q17 -17 17 -42q0 -24 -17 -41t-41 -17q-25 0 -42 17l-159 158
+q-15 15 -15 30q-2 8 -2 12z" />
+    <glyph glyph-name="uniF031" unicode="&#xf031;" horiz-adv-x="691" 
+d="M0 474q0 141 101 244q101 101 244 101q142 0 245 -101q101 -101 101 -244q0 -70 -27 -135q-19 -40 -36 -65l-229 -347q-23 -35 -53 -35q-31 0 -54 35l-229 347q-63 88 -63 200zM217 474q0 -53 37.5 -91t90.5 -38t91 38t38 91t-38 90.5t-91 37.5t-90.5 -38t-37.5 -90z" />
+    <glyph glyph-name="u1F4C5" unicode="&#x1f4c5;" horiz-adv-x="930" 
+d="M815 700q42 0 71 -29t29 -71v-600q0 -41 -29.5 -70.5t-70.5 -29.5h-700q-40 0 -70 30t-30 70v600q0 41 29.5 70.5t70.5 29.5h46v-100h160v100h290v-100h160v100h44zM815 400h-700v-400h700v400zM275 630h-70v170h70v-170zM725 800v-170h-70v170h70z" />
+  </font>
+</defs></svg>
