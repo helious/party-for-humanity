@@ -12,7 +12,13 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 
   def self.find_for_database_authentication(conditions={})
-    self.where("id = ?", Profile.where("username = ?", conditions[:email]).limit(1).first.user_id).limit(1).first || self.where("email = ?", conditions[:email]).limit(1).first
+    profile = Profile.where("username = ?", conditions[:email]).limit(1).first
+    
+    unless profile.nil?
+      self.where("id = ?", profile.user_id).limit(1).first 
+    else
+      self.where("email = ?", conditions[:email]).limit(1).first
+    end
   end
 
   def create_profile
