@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
   after_save :create_profile
   has_one :profile
+  has_many :parties
   accepts_nested_attributes_for :profile
 
   # Setup accessible (or protected) attributes for your model

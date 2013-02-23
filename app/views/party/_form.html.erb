@@ -1,0 +1,70 @@
+<%= form_for @party, :url => { :action => params[:action] } do |f| %>
+	<div class="left"> 
+		<%= f.text_field :name, :placeholder => 'Event Name' %>
+		<%= f.text_field :host, :placeholder => 'Hosted By' %>
+		<%= f.text_field :location, :placeholder => 'Location' %>
+		<%= f.text_field :address, :placeholder => 'Address' %>
+		<%= f.text_field :city, :placeholder => 'City' %>
+		<%= f.text_field :zip, :placeholder => 'Zip' %>
+		<%= f.text_field :phone_number, :placeholder => 'Phone Number' %>
+	</div>
+	<div class="right">
+		<div>
+			<div>
+				Type of Party
+			</div>
+			<div>
+				<%= f.select :party_type, @party_types %>
+			</div>
+		</div>
+		<div>
+			<div>
+				Pick a Date
+			</div>
+			<div>
+				<%= f.date_select :date, :start_year => Time.new.year %>
+			</div>
+		</div>
+		<div>
+			<div>
+				Pick a Time
+			</div>
+			<div>
+				<%= f.time_select :time %>
+			</div>
+		</div>
+		<div>
+			<div>
+				Pick a Charity
+			</div>
+			<div>
+				<%= f.select :charity_id, @charities %>
+			</div>
+		</div>
+		<%= f.submit 'Continue', :id => 'submit' %>
+	</div>
+	<%= f.text_area :message, :placeholder => 'Message to Guests' %>
+<% end %>
+
+<style>
+.right, .left {
+	width: 50%;
+	clear: none;
+}
+
+.left input, textarea {
+	width: 80%;
+}
+
+textarea {
+	height: 10em;
+}
+
+.right {
+	float: right;
+}
+
+.left {
+	float: left;
+}
+</style>

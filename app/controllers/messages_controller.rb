@@ -10,13 +10,7 @@ class MessagesController < ApplicationController
 		rescue => e
 			flash[:warning] = 'Please make sure you''ve entered a valid e-mail address!' # e.message TODO: Appropriate error messaging.
 
-			params.delete :is_charity_suggestion
-
 			redirect_to (params[:is_charity_suggestion] ? share_path(:params => params.encode_values_for_urls) : suggest_path(:params => params.encode_values_for_urls))
-	#	rescue => e
-	#		flash[:notice] = 'What are you trying to do?'
-
-	#		redirect_to root_url
 		end
 	end
 

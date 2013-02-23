@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130218044717) do
+ActiveRecord::Schema.define(:version => 20130223165100) do
 
   create_table "charities", :force => true do |t|
     t.string "name"
@@ -27,6 +27,25 @@ ActiveRecord::Schema.define(:version => 20130218044717) do
     t.boolean "sent",                  :default => false
     t.boolean "is_charity_suggestion"
   end
+
+  create_table "parties", :force => true do |t|
+    t.string  "name"
+    t.string  "host"
+    t.string  "party_type"
+    t.string  "location"
+    t.string  "city"
+    t.string  "state"
+    t.string  "zip"
+    t.string  "address"
+    t.string  "phone_number"
+    t.date    "date"
+    t.time    "time"
+    t.text    "message"
+    t.integer "charity_id"
+    t.integer "user_id"
+  end
+
+  add_index "parties", ["user_id"], :name => "index_parties_on_user_id"
 
   create_table "profiles", :force => true do |t|
     t.string  "username"

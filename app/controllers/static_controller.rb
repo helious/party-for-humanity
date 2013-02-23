@@ -18,9 +18,6 @@ class StaticController < ApplicationController
     end
   end
   
-  def organize
-  end
-  
   def share
   end
   

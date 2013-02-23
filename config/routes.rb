@@ -5,7 +5,6 @@ PartyForHumanity::Application.routes.draw do
   
   match '/learn' => 'static#learn', :as => :learn
   match '/choose' => 'static#choose', :as => :choose
-  match '/organize' => 'static#organize', :as => :organize
   match '/who-we-are' => 'static#who_we_are', :as => :who_we_are
   match '/board' => 'static#board', :as => :board
   match '/donate' => 'static#donate', :as => :donate
@@ -20,6 +19,11 @@ PartyForHumanity::Application.routes.draw do
   post '/message' => 'messages#create', :as => :send_message
 
   match '/profile/edit' => 'profile#edit', :as => :edit_profile
+
+  put '/party/edit/:id' => 'party#edit'
+  get '/party/edit/:id' => 'party#edit', :as => :edit_party
+  match '/organize' => 'party#create', :as => :organize
+  post '/organize' => 'party#create', :as => :parties
 
   post '/choose' => 'static#choose', :as => :search_charities
 end

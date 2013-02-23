@@ -1,0 +1,6 @@
+<h2>Your Parties</h2>
+<% current_user.parties.each do |party| %>
+<div id="parties">
+	<%= link_to party.name, edit_party_path(party.id) %>
+</div>
+<% end %>
