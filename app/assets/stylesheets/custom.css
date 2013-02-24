@@ -324,7 +324,65 @@ b {
 			color: #999;
 			text-transform: uppercase;
 		}
+				
+		.party-info dt {
+			float: left;
+			margin-top: .45em;
+			color: #BBB;
+		}
 
+		.party-info dd {
+			margin-left: 1.75em;
+			margin-bottom: .2em;
+			line-height: 1.5;
+/* 			margin-right: 7em; */
+		}
+
+		.summary .progress {
+			position: relative;
+			overflow: hidden;
+			zoom: 1;
+			height: 7.6em;
+			margin-top: 1em;			
+		}
+		
+		.progress .bank {
+			float: right;
+			height: 10em;
+			position: relative;
+			top: -1.4em;
+			z-index: 1;
+			margin-right: .4em;
+		}
+		
+		.progress .fill {
+			position: absolute;
+			right: .5em;
+			bottom: 0;
+			height: 0;
+			max-height: 7.6em;
+			width: 8.8em;
+			background: #FFCAE1;
+		}
+		
+		#donated {
+			position: relative;
+			margin: 0em;
+			line-height: 1;
+			font-size: 3em;
+			white-space: nowrap;
+			z-index: 2;
+		}
+		
+		small.sub {
+			font-weight: 300;
+		}
+		
+		small.sub .highlight {
+			font-weight: 500;
+			color: #707070;
+		}
+		
 /* ==========================================================================================
    INTERMEDIATE
    ========================================================================================== */
