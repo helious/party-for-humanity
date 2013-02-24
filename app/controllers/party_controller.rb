@@ -1,4 +1,5 @@
 class PartyController < ApplicationController
+	before_filter :authenticate_user!
 
 	def create
 		@party = Party.new params[:party]
