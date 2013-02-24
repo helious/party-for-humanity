@@ -5,7 +5,7 @@ class PartyController < ApplicationController
 
 		if request.post?
 	      if @party.save
-	        return redirect_to my_account_path
+	        return redirect_to add_guest_path(@party.id)
 	      end
 	    end
 

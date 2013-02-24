@@ -1,0 +1,11 @@
+<h2>Add a Guest</h2>
+<%= form_for @guest do |f| %>
+  <%= f.text_field :name, :placeholder => 'Guest\'s Name' %>
+  <%= f.text_field :email, :placeholder => 'Guest\'s Email' %>
+  <%= f.text_field :address, :placeholder => 'Guest\'s Address' %>
+  <%= f.text_field :city, :placeholder => 'Guest\'s City' %>
+  <%= f.text_field :state, :placeholder => 'Guest\'s State' %>
+  <%= f.text_field :zip, :placeholder => 'Guest\'s Zip' %>
+
+  <%= submit_tag 'Add Guest', :id => 'submit' %>
+<% end %>

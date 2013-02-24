@@ -14,4 +14,8 @@ class MessagesController < ApplicationController
 		end
 	end
 
+	def new
+
+	end
+
 end

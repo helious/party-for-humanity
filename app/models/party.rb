@@ -1,5 +1,6 @@
 class Party < ActiveRecord::Base
 	belongs_to :user
+	has_many :guests
 	attr_accessible :name, :host, :party_type, 
 					:location, :address, :city, :state, 
 					:zip, :phone_number, :date, 

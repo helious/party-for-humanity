@@ -1,5 +1,5 @@
 class StaticController < ApplicationController
-  before_filter :authenticate_user!, :only => [ :organize, :account ]
+  before_filter :authenticate_user!, :only => [ :account ]
 
   def home
   end
@@ -18,9 +18,6 @@ class StaticController < ApplicationController
     end
   end
   
-  def share
-  end
-  
   def who_we_are
   end
   
@@ -37,9 +34,6 @@ class StaticController < ApplicationController
   end
   
   def privacy
-  end
-  
-  def contact
   end
 
   def account

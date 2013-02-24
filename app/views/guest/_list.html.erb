@@ -1,0 +1,18 @@
+<h2>Current Guest List</h2>
+<% @guests.each do |guest| %>
+<div>
+	<%= guest.name %>
+	<%= guest.email %>
+	<%= guest.address %>
+	<%= guest.city %>
+	<%= guest.state %>
+	<%= guest.zip %>
+	<%= guest.rsvp %> 
+	<%= guest.donation %>
+</div>
+<% end %>
+<% if @guests.size < 1 %>
+<div>
+	You haven't invited anybody yet.
+</div>
+<% end %>
