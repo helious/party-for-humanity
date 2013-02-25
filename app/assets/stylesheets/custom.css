@@ -309,16 +309,19 @@ b {
 			border: .7em solid #F5F5F5;
 		}
 	
-	.summary {
+	.party-profile {
 		background: #F5F5F5;
 		padding: 0 1.2em 1em; 
+		-moz-border-radius: 0 0 .72em .72em;
+		-webkit-border-radius: 0 0 .72em .72em;
+		border-radius: 0 0 .72em .72em;
 	}
 	
-		.summary h2 {
+		.party-profile h2 {
 			margin: 0;
 		}
 		
-		.summary small {
+		.party-profile small {
 			font-weight: 600;
 			line-height: 1;
 			color: #999;
@@ -338,7 +341,7 @@ b {
 /* 			margin-right: 7em; */
 		}
 
-		.summary .progress {
+		.party-profile .progress {
 			position: relative;
 			overflow: hidden;
 			zoom: 1;
@@ -363,6 +366,9 @@ b {
 			max-height: 7.6em;
 			width: 8.8em;
 			background: #FFCAE1;
+			-moz-transition: height 200ms ease;
+			-webkit-transition: height 200ms ease;
+			transition: height 200ms ease;
 		}
 		
 		#donated {
@@ -383,6 +389,41 @@ b {
 			color: #707070;
 		}
 		
+	section.party {
+		overflow: hidden;
+		zoom: 1;
+		margin: 1.2em 0;
+	}
+
+	.party.announcement {
+		margin: 3em 0;
+		padding: 1em 1em .5em;	
+		background: #EBE7E5;
+		-moz-border-radius: 1em;
+		-webkit-border-radius: 1em;
+		border-radius: 1em;
+	}
+		
+		.announcement h2 {
+			margin-bottom: 0;
+			color: #44BDBE;
+		}
+	
+		.announcement p {
+			margin-top: .7em;
+			line-height: 1.4;
+			font-size: 1em;
+			color: #808080;
+		}
+
+	.guests {
+		background: #F5F5F5;
+	}
+	
+		.guests h2 {
+			color: #9BCE50;
+		}
+	
 /* ==========================================================================================
    INTERMEDIATE
    ========================================================================================== */
