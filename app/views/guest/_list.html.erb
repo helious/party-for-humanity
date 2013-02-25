@@ -1,14 +1,7 @@
 <h2>Current Guest List</h2>
 <% @guests.each do |guest| %>
 <div>
-	<%= guest.name %>
-	<%= guest.email %>
-	<%= guest.address %>
-	<%= guest.city %>
-	<%= guest.state %>
-	<%= guest.zip %>
-	<%= guest.rsvp %> 
-	<%= guest.donation %>
+	<%= guest.name %> | <%= guest.email %> | <%= link_to 'Edit', edit_guest_path(guest.id, params[:party_id]) %>
 </div>
 <% end %>
 <% if @guests.size < 1 %>

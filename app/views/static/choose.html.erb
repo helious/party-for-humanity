@@ -4,7 +4,7 @@
 <%= form_tag do %>
   <%= text_field_tag :keyword, params[:keyword], :placeholder => 'Enter a keyword...'  %>
   <%= select_tag :category, options_for_select(@charity_categories, params[:category]) %>
-  <%= submit_tag 'Search', :id => 'submit' %>
+  <%= submit_tag 'Search', :class => 'button left' %>
 <% end %>
 <%= render :partial => 'charity/charity', :collection => @charities, :as => :charity %>
 <%= link_to 'Suggest A Charity', suggest_path %> |
@@ -24,7 +24,7 @@
 		font-size: 1.5em;
 	}
 
-	#keyword, #submit {
+	#keyword, .button {
 		float: none;
 	}
 

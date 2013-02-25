@@ -20,6 +20,37 @@
 
 <%- if devise_mapping.omniauthable? %>
   <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider) %><br />
+    <div id="fb-container">	
+    	<div id="fb"></div>
+    	<%= link_to "Sign In with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider), :id => 'fb-login' %>
+	</div>
   <% end -%>
 <% end -%>
+
+<style>
+#fb {
+	background-image: url("https://fbstatic-a.akamaihd.net/rsrc.php/v2/y6/x/S-DbSHszr4D.png");
+    background-repeat: no-repeat;
+    display: inline-block;
+    background-position: 0 -132px;
+    height: 22px;
+    width: 22px;
+    float: left;
+}
+
+#fb-login {
+	background-color: #5F78AB;
+    color: #FFFFFF;
+    border-bottom: 1px solid #1A356E;
+    border-right: 1px solid #29447E;
+    border-top: 1px solid #29447E;
+    display: inline-block;
+    height: 20px;
+    font-size: 16px;
+    float: left;
+}
+
+#fb-container {
+	height: 22px;
+}
+</style>

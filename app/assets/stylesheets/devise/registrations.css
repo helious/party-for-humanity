@@ -1,17 +1,7 @@
-.right {
-	float: right;
-	clear: right;
-}
-
-.left {
-	float: left;
-	clear: left;
-}
-
 .left, .right {
 	width: 50%;
 }
 
-#submit {
+.button {
 	clear: both;
 }

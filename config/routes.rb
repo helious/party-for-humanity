@@ -1,5 +1,5 @@
 PartyForHumanity::Application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => 'users/omniauth_callbacks' }
 
   #"Static"
   root :to => 'static#home'
@@ -15,10 +15,11 @@ PartyForHumanity::Application.routes.draw do
   match '/party' => 'static#party', :as => :party
 
   #Guest
-  match '/party/:party_id/guest' => 'guest#add', :as => :add_guest
-  post '/party/:party_id/guest' => 'guest#add', :as => :guests
-  match '/party/:party_id/guest/:id' => 'guest#edit', :as => :edit_guest
-  put '/party/:party_id/guest/:id' => 'guest#edit'
+  match '/guest/party/:party_id' => 'guest#add', :as => :add_guest
+  post '/guest/party/:party_id' => 'guest#add'
+  match '/guest/:id/party/:party_id' => 'guest#edit', :as => :edit_guest
+  put '/guest/:id/party/:party_id' => 'guest#edit'
+  put '/guest/party/:id/:party_id' => 'guest#update', :as => :update_guest
 
   #Charities
   match '/choose' => 'static#choose', :as => :choose
@@ -29,6 +30,7 @@ PartyForHumanity::Application.routes.draw do
 
   #Parties
   put '/party/edit/:id' => 'party#edit'
+  get '/party/:id' => 'party#view', :as => :view_party
   get '/party/edit/:id' => 'party#edit', :as => :edit_party
   match '/organize' => 'party#create', :as => :organize
   post '/organize' => 'party#create', :as => :parties
