@@ -1,0 +1,68 @@
+<h1><%= "#{@party.name}" %></h1>
+<h2>Party Details<%= link_to 'Edit', edit_party_path(@party.id) %></h2>
+<div class="left">
+	<span class="left">Hosted By</span>
+	<span class="right"><%= "#{@party.host}" %></span>
+</div>
+<div class="left">
+	<span class="left">Location</span>
+	<span class="right"><%= "#{@party.location}" %></span>
+</div>
+<div class="left">
+	<span class="left">Date</span>
+	<span class="right"><%= "#{@party.date.strftime('%m/%e/%Y')}" %></span>
+</div>
+<div class="left">
+	<span class="left">Time</span>
+	<span class="right"><%= "#{@party.time.strftime('%l:%M %p')}" %></span>
+</div>
+<% unless @charity.nil? %>
+<div class="left">
+	<span class="left">Selected Charity</span>
+	<span class="right"><%= "#{@charity.name}" %></span>
+</div>
+<% end %>
+<h2>Guests<%= link_to 'Add', add_guest_path(@party.id) %></h2>
+<% donation_total = 0 %>
+<% @party.guests.each do |guest| %>
+<% donation_total += guest.donation unless guest.donation.nil? %>
+<div class="guest">
+	<div class="left">
+		<span class="left">Name</span>
+		<span class="right"><%= "#{guest.name.blank? ? guest.email : guest.name}" %></span>
+	</div>
+	<%= form_for guest, :url => url_for(update_guest_path(guest.id, params[:id])) do |f| %>
+		<div class="left">
+			<span class="left">RSVP'd</span>
+			<span class="right"><%= f.select :rsvp, [['Yes!', true], ['Not Yet', false]], :selected =>(guest.rsvp.blank? ? false : true) %></span>
+		</div>
+		<div class="left">
+			<span class="left">Donation</span>
+			<span class="right">$<%= f.number_field :donation %></span>
+		</div>
+		<%= f.submit 'Update', :class => 'button right' %>
+	<% end %>
+</div>
+<% end %>
+<div class="left">
+	<h2>Total Donated: <%= number_to_currency donation_total %>!</h2>
+</div>
+
+<style>
+.guest {
+	float: left;
+	clear: none;
+	width: 33.33%;
+	padding: 1em 1%;
+}
+
+div.left {
+	width: 100%;
+	clear: none;
+}
+
+h2 a {
+	font-size: 0.66em;
+	margin: 0 0 0 2.5%;
+}
+</style>

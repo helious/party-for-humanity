@@ -1,7 +1,8 @@
 <h2>Your Parties</h2>
 <% current_user.parties.each do |party| %>
 <div>
-	<%= link_to party.name, edit_party_path(party.id) %> | 
+	<%= link_to party.name, view_party_path(party.id) %> | 
+	<%= link_to 'Edit Party', edit_party_path(party.id) %> | 
 	<%= link_to 'Manage Guests', add_guest_path(party.id) %>
 </div>
 <% end %>

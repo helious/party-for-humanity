@@ -61,8 +61,7 @@ input[type="text"], input[type="email"], input[type="password"], textarea {
 	max-width: 356px;
 }
 
-#submit {
-	float: left;
+.button {
 	background-color: #44BDBE;
 	color: #FFF;
 	background-image: -moz-linear-gradient(center top , #44BDBE, #44BDBE);
@@ -71,10 +70,12 @@ input[type="text"], input[type="email"], input[type="password"], textarea {
 	display: inline-block;
 	font-weight: bold;
 	height: 2.25em;
-	line-height: 1.5em;
+	line-height: 2.25em;
 	min-width: 64px;
 	font-family: 'Montserrat Alternates', sans-serif;
-	clear: left;
+	font-size: 100%;
+    margin: 0;
+    vertical-align: baseline;
 }
 
 form {
@@ -85,4 +86,24 @@ form {
 		float: left;
 		clear: left;
 	}
+}
+
+.field_with_errors {
+	width: 100%;
+}
+
+.field_with_errors:after {
+	content: "*";
+	color: #FF0000;
+	padding: 0 0 0 0.25%;
+}
+
+.right {
+	float: right;
+	clear: right;
+}
+
+.left {
+	float: left;
+	clear: left;
 }

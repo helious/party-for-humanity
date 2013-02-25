@@ -13,5 +13,5 @@
   <%= text_field_tag :email, (params[:email].blank? ? current_user.email : params[:email].decode_from_urls), :placeholder => '...type your e-mail here...', :id => 'email' %>
   <%= text_area_tag :body, params[:body].decode_from_urls, :placeholder => '...and then share a message with us!', :id => 'message' %>
   <%= hidden_field_tag :is_charity_suggestion, request.url.include?('suggest') %> 
-  <%= submit_tag 'Share', :id => 'submit' %>
+  <%= submit_tag 'Share', :class => 'button' %>
 <% end %>

@@ -1,16 +1,30 @@
 class PartyController < ApplicationController
 	before_filter :authenticate_user!
+	before_filter { |c| c.assert_party_ownership params[:id] if params[:action] == 'edit' }
 
 	def create
 		@party = Party.new params[:party]
+		@party.host = @profile.name if @party.host.blank?
+	    @party.zip = @profile.zipcode if @party.zip.blank?
+	    @party.user_id = current_user.id
 
 		if request.post?
+
 	      if @party.save
 	        return redirect_to add_guest_path(@party.id)
+	      else
+	      	@party.errors.full_messages.each do |message|
+	      		flash[:alert] = message
+	      	end
 	      end
 	    end
 
 	    setup
+	end
+
+	def view
+		@party = Party.find params[:id]
+		@charity = Charity.find @party.charity_id unless @party.charity_id.blank?
 	end
 
 	def edit
@@ -27,10 +41,6 @@ class PartyController < ApplicationController
 
 	private
 	def setup
-	    @party.host = @profile.name if @party.host.blank?
-	    @party.zip = @profile.zipcode if @party.zip.blank?
-	    @party.user_id = current_user.id
-
 	    @charities = [['', 0]]
 
 	    Charity.all.each do |charity|
@@ -63,6 +73,13 @@ class PartyController < ApplicationController
 	    @party_types << ['Halloween', 'Halloween']
 	    @party_types << ['Other General', 'Other General']
 	    @party_types << ['Other Holiday', 'Other Holiday']
+	end
+
+	def assert_ownership
+		unless current_user.parties.exists? :id => params[:id]
+			flash[:alert] = 'You can only view/edit your parties.'
+			redirect_to my_account_path
+		end
 	end
 
 end
