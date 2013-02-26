@@ -418,13 +418,13 @@ b {
 	
 	.content-wrapper {
 		max-height: 16em;
+		margin: 1em 0 1.2em;
 		overflow-y: auto;
 		overflow-x: hidden;
 		border: 1px solid #E3E3E3;
 		-moz-border-radius: 1em;
 		-webkit-border-radius: 1em;
 		border-radius: 1em;
-		margin-top: 1em;
 	}
 	
 	.guests {
@@ -471,6 +471,18 @@ b {
 		.guest-list tbody > tr:nth-child(even) > td,
 		.guest-list tbody > tr:nth-child(even) > th {
 			background: #F1F1F0;
+		}
+		
+		.guests .buttons button {
+			width: 48%;
+		}
+		
+		#email-guests {
+			background-color: #2BA6CB;
+		}
+		
+		#invite-guests {
+			background-color: #F16529;
 		}
 	
 /* ==========================================================================================
