@@ -389,14 +389,13 @@ b {
 			color: #707070;
 		}
 		
-	section.party {
+	.party {
 		overflow: hidden;
 		zoom: 1;
-		margin: 1.2em 0;
+		margin: 3em 0;
 	}
 
-	.party.announcement {
-		margin: 3em 0;
+	.announcement {
 		padding: 1em 1em .5em;	
 		background: #EBE7E5;
 		-moz-border-radius: 1em;
@@ -428,7 +427,6 @@ b {
 	}
 	
 	.guests {
-		background: #F5F5F5;
 	}
 	
 		.guests h2 {
@@ -484,6 +482,69 @@ b {
 		#invite-guests {
 			background-color: #F16529;
 		}
+
+	.comments {
+		background: #F5F5F5;
+	}
+	
+		.comments h2 {
+			color: #FF775F;
+		}
+		
+		.comment {
+			padding: 1em;
+		}
+		
+			.comment:nth-child(odd) {
+				background: #EBE7E5;
+			}
+	
+			.comment:nth-child(even) {
+				background: #F1F1F0;
+			}
+			
+			.comment-header {
+				overflow: hidden;
+				zoom: 1;
+			}
+			
+			.comment small {
+				float: right;
+				line-height: 1.7;
+			}
+			
+			.comment-header > span {
+				display: block;
+				padding: .12em 0;
+				line-height: 1.2;
+				font-size: .9em;
+				font-weight: 600;
+				color: #2ba6cb;
+				text-transform: uppercase;
+			}
+			
+			.comment > p {
+				margin: .2em 0 0;
+				line-height: 1.4;
+				font-size: 1em;
+			}
+			
+			.comment-box {
+				width: 100%;
+				-moz-box-sizing: border-box;
+				-webkit-box-sizing: border-box;
+				box-sizing: border-box;
+				min-height: 4em;
+				padding: 1% 2%;
+				border: 1px solid #E3E3E3;
+				-moz-border-radius: 1em;
+				-webkit-border-radius: 1em;
+				border-radius: 1em;
+			}
+			
+			#comment-add {
+				background: #FCE06A;
+			}
 	
 /* ==========================================================================================
    INTERMEDIATE
