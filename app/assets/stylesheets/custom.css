@@ -287,6 +287,7 @@ b {
 	}
 	
 	header.banner {
+		position: relative;
 		height: 9em;
 /* 		margin-bottom: 1.5em; */
 		background: #666;
@@ -298,11 +299,11 @@ b {
 	}
 	
 		.banner .profile {
-			float: left;
+			position: absolute;
 			height: 7.2em;
 			width: 7.2em;
-			margin-top: 4.3em;
-			margin-left: 1.4em;
+			top: 4.3em;
+			left: 1.4em;
 			-webkit-border-radius: 5em;
 			-moz-border-radius: 5em;
 			border-radius: 5em;
@@ -310,12 +311,18 @@ b {
 		}
 	
 	.party-profile {
+		overflow: hidden;
+		zoom: 1;
 		background: #F5F5F5;
 		padding: 0 1.2em 1em; 
 		-moz-border-radius: 0 0 .72em .72em;
 		-webkit-border-radius: 0 0 .72em .72em;
 		border-radius: 0 0 .72em .72em;
 	}
+	
+		.party-header {
+			margin-left: 9em;
+		}
 	
 		.party-profile h2 {
 			margin: 0;
@@ -327,10 +334,16 @@ b {
 			color: #999;
 			text-transform: uppercase;
 		}
+		
+		.party-info {
+			overflow: hidden;
+			zoom: 1;
+			clear: both;
+		}
 				
 		.party-info dt {
 			float: left;
-			margin-top: .45em;
+			margin-top: .35em;
 			color: #BBB;
 		}
 
@@ -352,10 +365,10 @@ b {
 		.progress .bank {
 			float: right;
 			height: 10em;
-			position: relative;
+			position: absolute;
 			top: -1.4em;
+			right: .4em;
 			z-index: 1;
-			margin-right: .4em;
 		}
 		
 		.progress .fill {
@@ -371,6 +384,11 @@ b {
 			transition: height 200ms ease;
 		}
 		
+		.progress > small {
+			position: relative;
+			z-index: 5;
+		}
+		
 		#donated {
 			position: relative;
 			margin: 0em;
@@ -378,6 +396,14 @@ b {
 			font-size: 3em;
 			white-space: nowrap;
 			z-index: 2;
+		}
+		
+		.overlay {
+			background: rgba(245, 245, 245, .72);
+			padding-right: .3em;
+			-moz-border-radius: .5em;
+			-webkit-border-radius: .5em;
+			border-radius: .5em;
 		}
 		
 		small.sub {
@@ -389,7 +415,15 @@ b {
 			color: #707070;
 		}
 		
+		.highlight.overlay {
+			padding-right: .5em;
+			-moz-border-radius: .75em;
+			-webkit-border-radius: .75em;
+			border-radius: .75em;
+		}
+		
 	.party {
+		clear: both;
 		overflow: hidden;
 		zoom: 1;
 		margin: 3em 0;
@@ -540,6 +574,8 @@ b {
 				-moz-border-radius: 1em;
 				-webkit-border-radius: 1em;
 				border-radius: 1em;
+				max-width: none;
+			    font-family: Open Sans, Helvetica, Helvetica Neue, Arial;
 			}
 			
 			#comment-add {
@@ -585,6 +621,26 @@ body {
     .oldie nav a {
 /*         margin: 0 0.7%; */
     }
+}
+
+@media only screen and (min-width: 640px) {
+	.party-info dl {
+		clear: both;
+		width: 48%;
+		float: left;
+		margin-right: 4%;
+		font-size: .9em;
+	}
+	
+	.party-profile .progress {
+		width: 48%;
+		float: left;
+		margin-top: .75em;
+	}
+	
+	#donated {
+		font-size: 2.3em;
+	}
 }
 
 @media only screen and (min-width: 768px) {
