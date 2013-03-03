@@ -1,11 +1,12 @@
-<h2>Current Guest List</h2>
-<% @guests.each do |guest| %>
-<div>
-	<%= guest.name %> | <%= guest.email %> | <%= link_to 'Edit', edit_guest_path(guest.id, params[:party_id]) %>
-</div>
-<% end %>
-<% if @guests.size < 1 %>
-<div>
-	You haven't invited anybody yet.
+<% @party.guests.each do |guest| %>
+<div class="content-wrapper">
+	<table class="guest-list">
+		<tr>
+			<td><%= guest.name.blank? ? guest.email : guest.name %></td>
+			<td class="rsvp"><%= get_rsvp_status guest %></td>
+			<td class="donation">Donated
+			<span class="amount"><%= get_donation_status guest %></span></td>
+		</tr>
+	</table>
 </div>
 <% end %>

@@ -107,3 +107,25 @@ form {
 	float: left;
 	clear: left;
 }
+
+.main-container {
+	float: right;
+	width: 70%;
+}
+
+.footer-container {
+	float: left;
+	width: 100%;
+}
+
+.main.wrapper {
+	width: 100%;
+	float: left;
+	margin: 0 auto;
+}
+
+@media only screen and (max-width: 766px) {
+    .main-container {
+        width: 100%;
+    }   
+}

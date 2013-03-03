@@ -11,14 +11,37 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130224002549) do
+ActiveRecord::Schema.define(:version => 20130303005616) do
+
+  create_table "annoucements", :force => true do |t|
+    t.text    "body"
+    t.integer "party_id"
+  end
+
+  add_index "annoucements", ["party_id"], :name => "index_annoucements_on_party_id"
+
+  create_table "anoucements", :force => true do |t|
+    t.text    "body"
+    t.integer "party_id"
+  end
 
   create_table "charities", :force => true do |t|
     t.string "name"
     t.text   "description"
     t.string "category"
     t.string "website"
+    t.string "number"
+    t.string "donation_url"
   end
+
+  create_table "comments", :force => true do |t|
+    t.date    "date"
+    t.string  "name"
+    t.text    "body"
+    t.integer "party_id"
+  end
+
+  add_index "comments", ["party_id"], :name => "index_comments_on_party_id"
 
   create_table "guests", :force => true do |t|
     t.string  "name"
@@ -30,6 +53,7 @@ ActiveRecord::Schema.define(:version => 20130224002549) do
     t.boolean "rsvp"
     t.float   "donation"
     t.integer "party_id"
+    t.boolean "invite_sent", :default => true
   end
 
   add_index "guests", ["party_id"], :name => "index_guests_on_party_id"
@@ -57,6 +81,8 @@ ActiveRecord::Schema.define(:version => 20130224002549) do
     t.text    "message"
     t.integer "charity_id"
     t.integer "user_id"
+    t.float   "goal"
+    t.time    "end_time"
   end
 
   add_index "parties", ["user_id"], :name => "index_parties_on_user_id"

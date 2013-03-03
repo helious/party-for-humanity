@@ -25,6 +25,11 @@ class PartyController < ApplicationController
 	def view
 		@party = Party.find params[:id]
 		@charity = Charity.find @party.charity_id unless @party.charity_id.blank?
+		@total_donation = 0
+
+		@party.guests.each do |guest|
+			@total_donation += guest.donation unless guest.donation.nil?
+		end
 	end
 
 	def edit

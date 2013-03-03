@@ -1,31 +1,73 @@
-<h1><%= "#{@party.name}" %></h1>
-<h2>Party Details<%= link_to 'Edit', edit_party_path(@party.id) %></h2>
-<div class="left">
-	<span class="left">Hosted By</span>
-	<span class="right"><%= "#{@party.host}" %></span>
+<header class="banner clearfix">
+	<img class="profile" src="http://24.media.tumblr.com/tumblr_me3mb8GevE1qgxwpjo1_1280.jpg">
+</header>
+<div class="party-profile">
+	<div class="party-header">
+		<small>A party for</small>
+		<h2><%= @party.name %> <%= link_to '', edit_party_path(@party.id), :class => 'icon-forward' %></h2>
+	</div>
+	<div class="party-info">
+		<dl>
+			<dt class="icon-user"></dt>
+			<dd>Hosted by <%= @party.host %></dd>
+			<dt class="icon-calendar"></dt>
+			<dd><%= @party.date.strftime '%m/%e/%Y' %></dd>
+			<dt class="icon-clock"></dt>
+			<dd><%= "#{@party.time.strftime '%l:%M %p'} to #{@party.end_time.strftime '%l:%M %p'}" %></dd>
+			<dt class="icon-location"></dt>
+			<dd><%= @party.location.blank? ? 'Undisclosed' : @party.location %></dd>
+		</dl>
+
+		<div class="progress">
+			<img src="/assets/piggy-bank.png" class="bank">
+			<div class="fill" style="height: <%= @total_donation/@party.goal*100 %>%;"></div>
+			<small>We've raised</small>
+			<p id="donated"><span class="overlay"><%= number_to_currency @total_donation %></span></p>
+			<small class="sub">Help us reach <span class="highlight overlay">$<%= number_to_currency @party.goal %></span></small>
+		</div>	
+	</div>
+
+	<% unless @party.annoucements.empty? %>
+	<h2>Announcements</h2>
+	<% @party.annoucements.each do |annoucement| %>
+	<section class="party announcement">
+	<!-- 	<p>No recent announcement.</p> -->
+		<p><% announcement.body %></p>
+	</section>
+	<% end %>
+	<% end %>
+	
+	<section class="party guests">
+		<h2>Guests</h2>
+		<%= render 'guest/list' %>
+		<div class="buttons">
+			<button class="button left" id="email-guests">Email Guests</button>
+			<div class="button right" id="invite-guests"><%= link_to 'Invite Guests', add_guest_path(@party.id) %></div>
+		</div>
+		
+	</section>
+	
+	<section class="party comments">
+		<h2>Comments</h2>
+		<% @party.comments.each do |comment| %>
+		<div class="content-wrapper">
+			<div class="comment">
+				<div class="comment-header">
+					<small>2 days ago</small>
+					<span>Jeffrey Zeldman</span>
+				</div>
+				<p>IT World Canada runs stock photo on IE10 for Windows 7 article, focuses on wrong aspects of story.</p>
+			</div>
+		</div>
+		<% end %>
+		<form>
+			<textarea class="comment-box" placeholder="Leave a comment!"></textarea>
+			<input class="button right" type="submit" value="Add" id="comment-add">
+		</form>
+	</section>
 </div>
-<div class="left">
-	<span class="left">Location</span>
-	<span class="right"><%= "#{@party.location}" %></span>
-</div>
-<div class="left">
-	<span class="left">Date</span>
-	<span class="right"><%= "#{@party.date.strftime('%m/%e/%Y')}" %></span>
-</div>
-<div class="left">
-	<span class="left">Time</span>
-	<span class="right"><%= "#{@party.time.strftime('%l:%M %p')}" %></span>
-</div>
-<% unless @charity.nil? %>
-<div class="left">
-	<span class="left">Selected Charity</span>
-	<span class="right"><%= "#{@charity.name}" %></span>
-</div>
-<% end %>
-<h2>Guests<%= link_to 'Add', add_guest_path(@party.id) %></h2>
-<% donation_total = 0 %>
+
 <% @party.guests.each do |guest| %>
-<% donation_total += guest.donation unless guest.donation.nil? %>
 <div class="guest">
 	<div class="left">
 		<span class="left">Name</span>
@@ -43,26 +85,4 @@
 		<%= f.submit 'Update', :class => 'button right' %>
 	<% end %>
 </div>
-<% end %>
-<div class="left">
-	<h2>Total Donated: <%= number_to_currency donation_total %>!</h2>
-</div>
-
-<style>
-.guest {
-	float: left;
-	clear: none;
-	width: 33.33%;
-	padding: 1em 1%;
-}
-
-div.left {
-	width: 100%;
-	clear: none;
-}
-
-h2 a {
-	font-size: 0.66em;
-	margin: 0 0 0 2.5%;
-}
-</style>
+<% end if @party.user_id == current_user.id %>

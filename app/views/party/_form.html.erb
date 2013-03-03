@@ -27,10 +27,18 @@
 		</div>
 		<div>
 			<div>
-				Pick a Time
+				Pick a Start Time
 			</div>
 			<div>
 				<%= f.time_select :time %>
+			</div>
+		</div>
+		<div>
+			<div>
+				Pick an End Time
+			</div>
+			<div>
+				<%= f.time_select :end_time %>
 			</div>
 		</div>
 		<div>
@@ -39,6 +47,14 @@
 			</div>
 			<div>
 				<%= f.select :charity_id, @charities %>
+			</div>
+		</div>
+		<div>
+			<div>
+				Set a Goal
+			</div>
+			<div>
+				$<%= f.number_field :goal %>
 			</div>
 		</div>
 		<%= f.submit 'Continue', :class => 'button left' %>
