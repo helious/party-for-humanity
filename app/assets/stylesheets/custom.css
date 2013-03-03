@@ -17,6 +17,7 @@
 body {
     font: 14px/24px Open Sans, Helvetica, Helvetica Neue, Arial;
     background: url('swirl.png');
+    min-width: 320px;
 }
 
 h1 {
@@ -307,7 +308,10 @@ b {
 			-webkit-border-radius: 5em;
 			-moz-border-radius: 5em;
 			border-radius: 5em;
-			border: .7em solid #F5F5F5;
+/* 			border: .7em solid #F5F5F5; */
+			-moz-box-shadow: 0 0 0 .7em #F5F5F5;
+			-webkit-box-shadow: 0 0 0 .7em #F5F5F5;
+			box-shadow: 0 0 0 .7em #F5F5F5;
 		}
 	
 	.party-profile {
