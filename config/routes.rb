@@ -35,6 +35,10 @@ PartyForHumanity::Application.routes.draw do
   match '/organize' => 'party#create', :as => :organize
   post '/organize' => 'party#create', :as => :parties
 
+  #Comments
+  post '/comment/:id' => 'comment#post'
+  post '/comment/:party_id/:id' => 'comment#delete'
+
   #Messages.
   match '/share' => 'messages#new', :as => :share
   match '/suggest' => 'messages#new', :as => :suggest

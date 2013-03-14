@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130303005616) do
+ActiveRecord::Schema.define(:version => 20130313235315) do
 
   create_table "annoucements", :force => true do |t|
     t.text    "body"
@@ -35,10 +35,10 @@ ActiveRecord::Schema.define(:version => 20130303005616) do
   end
 
   create_table "comments", :force => true do |t|
-    t.date    "date"
-    t.string  "name"
-    t.text    "body"
-    t.integer "party_id"
+    t.datetime "date"
+    t.string   "name"
+    t.text     "body"
+    t.integer  "party_id"
   end
 
   add_index "comments", ["party_id"], :name => "index_comments_on_party_id"

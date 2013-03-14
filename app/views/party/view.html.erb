@@ -4,7 +4,7 @@
 <div class="party-profile">
 	<div class="party-header">
 		<small>A party for</small>
-		<h2><%= @party.name %> <%= link_to '', edit_party_path(@party.id), :class => 'icon-forward' %></h2>
+		<h2><%= @party.name %> <%= link_to '', edit_party_path(@party.id), :class => 'icon-forward' if @is_party_owner %></h2>
 	</div>
 	<div class="party-info">
 		<dl>
@@ -40,11 +40,14 @@
 	<section class="party guests">
 		<h2>Guests</h2>
 		<%= render 'guest/list' %>
+		<% if @is_party_owner %>
 		<div class="buttons">
 			<button class="button left" id="email-guests">Email Guests</button>
-			<div class="button right" id="invite-guests"><%= link_to 'Invite Guests', add_guest_path(@party.id) %></div>
+			<div class="button right" id="invite-guests">
+				<%= link_to 'Invite Guests', add_guest_path(@party.id) %>
+			</div>
 		</div>
-		
+		<% end %>
 	</section>
 	
 	<section class="party comments">
@@ -53,10 +56,10 @@
 		<div class="content-wrapper">
 			<div class="comment">
 				<div class="comment-header">
-					<small>2 days ago</small>
-					<span>Jeffrey Zeldman</span>
+					<small><%= get_time_difference comment.date.to_time %></small>
+					<span><%= comment.name %></span>
 				</div>
-				<p>IT World Canada runs stock photo on IE10 for Windows 7 article, focuses on wrong aspects of story.</p>
+				<p><%= comment.body %><% if @is_party_owner %><span class="icon-forward" title="Delete comment." alt="<%= comment.id %>"></span><% end %></p>
 			</div>
 		</div>
 		<% end %>
@@ -85,4 +88,25 @@
 		<%= f.submit 'Update', :class => 'button right' %>
 	<% end %>
 </div>
-<% end if @party.user_id == current_user.id %>
+<% end if false #@is_party_owner %>
+
+<script type="text/javascript">
+$(function() {
+	$('.comments .icon-forward').css('cursor', 'pointer').on('click', function(e) {
+		$.post('/comment/<%= params[:id] %>/' + $(this).attr('alt')).done(function(data) {
+			if (data === 'true')
+				$(e.target).closest('.content-wrapper').remove();
+		});
+	});
+
+	$('.comments form').on('submit', function(e) {
+		e.preventDefault();
+
+		$.post('/comment/<%= params[:id] %>', { body: $(this).children('.comment-box').val() }).done(function(data) {
+			$(data).filter('.content-wrapper').insertAfter($('.party.comments .content-wrapper')[0] ? $('.party.comments .content-wrapper').last() : $('.party.comments h2'));
+		});
+
+		$(this).children('.comment-box').val('');
+	});
+});
+</script>

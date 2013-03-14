@@ -1,8 +1,6 @@
 class GuestController < ApplicationController
 	before_filter :authenticate_user!
-	before_filter { |c|  
-		c.assert_party_ownership params[:party_id] 
-	}
+	before_filter { |c| c.assert_party_ownership params[:party_id] }
 
 	def add
 		@party = Party.find params[:party_id]

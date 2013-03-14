@@ -1,0 +1,9 @@
+<div class="content-wrapper">
+	<div class="comment">
+		<div class="comment-header">
+			<small><%= get_time_difference @comment.date.to_time %></small>
+			<span><%= @comment.name %></span>
+		</div>
+		<p><%= @comment.body %></p>
+	</div>
+</div>

@@ -1,5 +1,11 @@
 class PartyController < ApplicationController
-	before_filter :authenticate_user!
+	before_filter { |c|
+		if params[:action] == 'view'
+			c.authenticate_user! unless c.is_party_guest?
+		else
+			c.authenticate_user!
+		end
+	}
 	before_filter { |c| c.assert_party_ownership params[:id] if params[:action] == 'edit' }
 
 	def create
@@ -26,7 +32,7 @@ class PartyController < ApplicationController
 		@party = Party.find params[:id]
 		@charity = Charity.find @party.charity_id unless @party.charity_id.blank?
 		@total_donation = 0
-
+		@is_party_owner = current_user.nil? ? false : (current_user.parties.exists? :id => params[:id])
 		@party.guests.each do |guest|
 			@total_donation += guest.donation unless guest.donation.nil?
 		end
@@ -42,6 +48,16 @@ class PartyController < ApplicationController
 		@party = Party.find params[:id]
 
 	  	setup
+	end
+
+	def is_party_guest?
+		session[:guest] = Guest.find_by_email(Base64.decode64 params[:tk]) unless params[:tk].blank?
+
+		unless session[:guest].nil?
+			session[:guest].party_id.to_s == params[:id]
+		else
+			false
+		end
 	end
 
 	private
