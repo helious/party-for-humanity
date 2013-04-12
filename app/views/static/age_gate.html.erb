@@ -1,0 +1,48 @@
+<h1>Age Check</h1>
+<% if @old_enough.nil? %>
+	<p>
+		Party for Humanity complies with the Children's Online Privacy Protection Act (COPPA).
+	</p>
+	<%= form_tag do |f| %>
+		<div>
+			<%= label_tag 'Please enter your birthday:' %>
+		</div>
+		<div>
+			<%= date_select nil, :date, :start_year => Time.now.year, :end_year => Time.now.year - 95 %>
+		</div>
+		<div>
+			<%= submit_tag 'Continue', :class => 'button' %>
+		</div>
+	<% end %>
+<% end %>
+<% if @old_enough == false %>
+	<p>
+		We'd love to have you host a Party for Humanity, but please have your mom or dad or another adult who takes care of you sign up for you.
+	</p>
+	<p>
+		Please have a parent or guardian enter an email address where we can reach him or her for verification.
+	</p>
+
+	<%= form_tag do |f| %>
+		<div>
+			<%= label_tag 'Parent`s Email:' %>
+		</div>
+		<div>
+			<%= email_field_tag :email %>
+		</div>
+		<div>
+			<%= submit_tag 'Continue', :class => 'button' %>
+		</div>
+	<% end %>
+<% end %>
+
+<style  type="text/css">
+	input[type='email'], select {
+		border-radius: 0 !important;
+
+	}
+
+	form div {
+		margin: 0.5em 0;
+	}
+</style>

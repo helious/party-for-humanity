@@ -1,5 +1,5 @@
 PartyForHumanity::Application.routes.draw do
-  devise_for :users, :controllers => { :omniauth_callbacks => 'users/omniauth_callbacks' }
+  devise_for :users, :controllers => { :omniauth_callbacks => 'users/omniauth_callbacks', :registrations => 'devise/custom/registrations' }
 
   #"Static"
   root :to => 'static#home'
@@ -13,6 +13,7 @@ PartyForHumanity::Application.routes.draw do
   match '/privacy' => 'static#privacy', :as => :privacy
   match '/account' => 'static#account', :as => :my_account
   match '/party' => 'static#party', :as => :party
+  match '/age-gate' => 'static#age_gate', :as => :age_gate
 
   #Guest
   match '/guest/party/:party_id' => 'guest#add', :as => :add_guest
