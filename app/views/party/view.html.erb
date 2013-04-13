@@ -42,7 +42,9 @@
 		<%= render 'guest/list' %>
 		<% if @is_party_owner %>
 		<div class="buttons">
-			<button class="button left" id="email-guests">Email Guests</button>
+			<div class="button left" id="email-guests">
+				<%= link_to 'Email Guests', send_party_invites_path(@party.id) %>
+			</div>
 			<div class="button right" id="invite-guests">
 				<%= link_to 'Invite Guests', add_guest_path(@party.id) %>
 			</div>

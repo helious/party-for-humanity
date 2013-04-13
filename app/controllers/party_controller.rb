@@ -50,6 +50,18 @@ class PartyController < ApplicationController
 	  	setup
 	end
 
+	def send_invites
+		Party.find_by_id(params[:id]).guests.each do |guest|
+			unless guest.invite_sent
+				Invitation.invite(guest, Party.find_by_id(params[:id])).deliver
+			end
+		end
+
+		flash[:notice] = 'Your guests have been invited via e-mail!'
+
+		redirect_to view_party_path(params[:id])
+	end
+
 	def is_party_guest?
 		session[:guest] = Guest.find_by_email(Base64.decode64 params[:tk]) unless params[:tk].blank?
 

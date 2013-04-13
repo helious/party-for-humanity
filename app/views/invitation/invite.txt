@@ -7,7 +7,7 @@ Hosted By
 <%= @party.host %>
 
 Location
-<%= @party.location %>
+<%= @party.location.blank? ? 'Undisclosed' : @party.location %>
 <%= @party.address %>
 <%= "#{@party.city}, #{@party.state} #{@party.zip}" %><
 

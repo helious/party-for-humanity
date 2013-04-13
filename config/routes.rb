@@ -33,6 +33,7 @@ PartyForHumanity::Application.routes.draw do
   put '/party/edit/:id' => 'party#edit'
   get '/party/:id' => 'party#view', :as => :view_party
   get '/party/edit/:id' => 'party#edit', :as => :edit_party
+  get '/party/:id/send-invites' => 'party#send_invites', :as => :send_party_invites
   match '/organize' => 'party#create', :as => :organize
   post '/organize' => 'party#create', :as => :parties
 

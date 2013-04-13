@@ -160,7 +160,7 @@
 						</tr>
 						<tr>
 							<td>Location</td>
-							<td><%= @party.location %><br><%= @party.address %><br><%= "#{@party.city}, #{@party.state} #{@party.zip}" %></td>
+							<td><%= @party.location.blank? ? 'Undisclosed' : @party.location %><br><%= @party.address %><br><%= "#{@party.city}, #{@party.state} #{@party.zip}" %></td>
 						</tr>
 						<tr>
 							<td>Date</td>
