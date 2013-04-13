@@ -1,7 +1,7 @@
 module PartyHelper
 
 	def get_donation_status(guest)
-		guest.donation.blank? ? 'Undisclosed' : number_to_currency(guest.donation)
+		guest.donation.blank? ? 'Undisclosed' : (guest.anonymous_donation? ? 'Undisclosed' : number_to_currency(guest.donation))
 	end
 
 	def get_rsvp_status(guest)

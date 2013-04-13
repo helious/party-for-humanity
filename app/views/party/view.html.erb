@@ -23,7 +23,7 @@
 			<div class="fill" style="height: <%= @total_donation/@party.goal*100 %>%;"></div>
 			<small>We've raised</small>
 			<p id="donated"><span class="overlay"><%= number_to_currency @total_donation %></span></p>
-			<small class="sub">Help us reach <span class="highlight overlay">$<%= number_to_currency @party.goal %></span></small>
+			<small class="sub">Help us reach <span class="highlight overlay"><%= number_to_currency @party.goal %></span></small>
 		</div>	
 	</div>
 
@@ -65,11 +65,33 @@
 			</div>
 		</div>
 		<% end %>
+		<% if @party.comments.size == 0 %>
+		<h3>No comments have been added yet...</h3>
+		<% end %>
 		<form>
 			<textarea class="comment-box" placeholder="Leave a comment!"></textarea>
 			<input class="button right" type="submit" value="Add" id="comment-add">
 		</form>
 	</section>
+
+	<% unless session[:guest].nil? %>
+	<% guest = session[:guest] %>
+	<%= form_for guest, :url => url_for(update_guest_path(guest.id, params[:id])) do |f| %>
+	<section class="party guests">
+		<h2>Your RSVP and Donation</h2>
+		<div class="content-wrapper">
+			<table class="guest-list">
+				<tr>
+					<td class="rsvp">RSVP - <%= f.select :rsvp, [['Yes!', true], ['No!', false]], :selected => (guest.rsvp.blank? ? false : true) %></td>
+					<td class="donation">Donation - $<%= f.number_field :donation %></td>
+					<td class="anonymous">Anonymous Donation? - <%= f.select :anonymous_donation, [['Yes', true], ['No', false]], :selected => (guest.anonymous_donation.blank? ? false : true) %></td>
+				</tr>
+			</table>
+		</div>
+	</section>
+	<%= f.submit 'Update', :class => 'button right' %>
+	<% end %>
+	<% end %>
 </div>
 
 <% @party.guests.each do |guest| %>

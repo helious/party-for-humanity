@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130313235315) do
+ActiveRecord::Schema.define(:version => 20130413212416) do
 
   create_table "annoucements", :force => true do |t|
     t.text    "body"
@@ -19,11 +19,6 @@ ActiveRecord::Schema.define(:version => 20130313235315) do
   end
 
   add_index "annoucements", ["party_id"], :name => "index_annoucements_on_party_id"
-
-  create_table "anoucements", :force => true do |t|
-    t.text    "body"
-    t.integer "party_id"
-  end
 
   create_table "charities", :force => true do |t|
     t.string "name"
@@ -53,7 +48,8 @@ ActiveRecord::Schema.define(:version => 20130313235315) do
     t.boolean "rsvp"
     t.float   "donation"
     t.integer "party_id"
-    t.boolean "invite_sent", :default => true
+    t.boolean "invite_sent",        :default => true
+    t.boolean "anonymous_donation"
   end
 
   add_index "guests", ["party_id"], :name => "index_guests_on_party_id"

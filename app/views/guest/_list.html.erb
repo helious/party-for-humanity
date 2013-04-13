@@ -10,3 +10,7 @@
 	</table>
 </div>
 <% end %>
+
+<% if @party.guests.size == 0 %>
+<h3>No guests have been invited yet...</h3>
+<% end %>

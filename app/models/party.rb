@@ -9,7 +9,7 @@ class Party < ActiveRecord::Base
 					:time, :message, :charity_id,
 					:user_id, :goal, :end_time
 
-	validates_presence_of :name, :user_id, :goal, :host
+	validates_presence_of :name, :user_id, :goal, :host, :charity_id
 
 	#TODO: Validation.
 end
