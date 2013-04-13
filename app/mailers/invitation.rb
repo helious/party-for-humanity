@@ -1,6 +1,11 @@
 class Invitation < ActionMailer::Base
 	def invite(guest, party)
-		mail :to => guest.email, :from => "#{user.email} <partyforhumanity.org>", :subject => "#{party.name}" do |format|
+		@guest = guest
+		@party = party
+
+		@charity = Charity.find_by_id party.charity_id
+
+		mail :to => guest.email, :from => "#{party.user.email} <partyforhumanity.org>", :subject => "#{party.name} - You're Invited!" do |format|
 			format.text
 			format.html
 		end

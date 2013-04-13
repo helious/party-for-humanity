@@ -1,0 +1,27 @@
+>Dear <%= @guest.name.blank? ? 'friend' : @guest.name %>,
+
+You are invited to:
+<%= @party.name %>
+
+Hosted By
+<%= @party.host %>
+
+Location
+<%= @party.location %>
+<%= @party.address %>
+<%= "#{@party.city}, #{@party.state} #{@party.zip}" %><
+
+Date
+<%= @party.date.strftime '%m/%e/%Y' %>
+
+Time
+<%= "#{@party.time.strftime '%l:%M %p'} to #{@party.end_time.strftime '%l:%M %p'}" %>
+
+Message to Guests:
+<%= @party.message %>
+
+<%= @party.host %> has asked that in lieu of gifts, donations be made to <%= @charity.name %>.
+
+To donate, visit <%= @charity.donation_url %> or call <%= @charity.number %>.
+
+Please RSVP and let <%= @party.host %> know about your donation by visiting this URL: http://www.partyforhumanity.org/party/<%= @party.id %>?tk=<%= Base64.encode64(@guest.email).chomp %>.

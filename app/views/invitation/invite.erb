@@ -1,0 +1,198 @@
+<html>
+	<body>
+		<style type="text/css">
+			body {
+				font-family : Helvetica, Verdana, Arial, sans-serif; 
+			}
+
+			TD { 
+				font-family : Helvetica,Verdana, Arial, sans-serif; 
+				font-size : 14px;
+				color : #003399; 
+			}
+
+			INPUT {
+				font-family : Helvetica,Verdana, Arial, sans-serif; 
+				font-size: 14px;
+				color: #666666;
+				background-color: #F6E8ED;
+				border: 1px solid #666666;
+			}
+
+
+			input.button
+			{
+				color: #F6E8ED;
+				background-color: #666666;
+					border: 1px solid #F6E8ED;
+			} 
+
+			SELECT {
+				font-family : Helvetica,Verdana, Arial, sans-serif; 
+				font-size: 14px;
+				color: #666666;
+				background-color: #F6E8ED;
+				border: 1px solid #666666;
+			}
+			TEXTAREA {
+				font-family : Helvetica,Verdana, Arial, sans-serif; 
+				font-size: 14px;
+				color: #666666;
+				background-color: #F6E8ED;
+				border: 1px solid #666666;
+			}
+			.outline {
+				height:2px;
+			}
+
+			.outline2 {
+				width:2px;
+			}
+
+			.title {
+			font-size : 22px; 
+			font-weight : bold;
+			}
+			.legal {
+			font-size : 10px; 
+			font-weight : bold;
+			}
+			.legal:link {
+			font-size : 10px; 
+			font-weight : bold;
+				color : #003399; 
+			}
+			.legal:visited {
+			font-size : 10px; 
+			font-weight : bold;
+				color : #003399; 
+			}
+			.legal:hover {
+			font-size : 10px; 
+			font-weight : bold;
+				color : #003399; 
+			}
+			.header {
+			font-size : 16px; 
+			font-weight : bold;
+			}
+
+			a.header {
+			font-size : 16px; 
+			font-weight : bold;
+				color: #666666;
+			}
+
+			.main{
+				line-height: 20px;
+			}
+			a.main{
+				color: #003399;
+				line-height: 20px;
+			}
+
+			a.main:link {
+				color: #003399;
+				line-height: 20px;
+			}
+			a.main:hover {
+				color: #003399;
+				line-height: 20px;
+				text-decoration: none;
+			}
+
+			.smaller{
+				font-size : 11px;
+			}
+			a.smaller{
+				font-size : 11px;
+				color: #003399;
+			}
+
+			a.smaller:link {
+			font-size : 11px;
+				color: #003399;
+			}
+
+			a.smaller:hover {
+				color: #003399;
+				font-size : 11px;
+				text-decoration: none;
+			}
+			.label {
+				text-align: right;
+			 	vertical-align: text-top;
+			}
+		</style>
+		<table width="600" border="0">
+			<tr>
+				<td>
+					<img src="http://www.partyforhumanity.org/images/logo.jpg">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<table cellpadding="4" border="0">
+						<tr>
+							<td class="title" colspan="2">
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<p>Dear <%= @guest.name.blank? ? 'friend' : @guest.name %>,</p>
+								<p>You are invited to:</p>
+							</td>
+						</tr>
+						<tr>
+							<td class="header" colspan="2">
+								<nowrap>
+									<b><%= @party.name %></b>
+								</nowrap>
+							</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td colspan="2">&nbsp;</td>
+						</tr>
+						<tr>
+							<td>Hosted By</td>
+							<td><%= @party.host %></td>
+						</tr>
+						<tr>
+							<td>Location</td>
+							<td><%= @party.location %><br><%= @party.address %><br><%= "#{@party.city}, #{@party.state} #{@party.zip}" %></td>
+						</tr>
+						<tr>
+							<td>Date</td>
+							<td><%= @party.date.strftime '%m/%e/%Y' %></td>
+						</tr>
+						<tr>
+							<td>Time</td>
+							<td><%= "#{@party.time.strftime '%l:%M %p'} to #{@party.end_time.strftime '%l:%M %p'}" %></td>
+						</tr>
+						<tr>
+							<td valign="top">Message to Guests:</td>
+							<td><%= @party.message %></td>
+						</tr>
+						<tr>
+							<td colspan="2">&nbsp;</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<p>
+									<%= @party.host %> has asked that in lieu of gifts, donations be made to <%= @charity.name %>.
+								</p>
+								<p>
+									To donate, visit <strong><%= @charity.donation_url %></strong> or call <strong><%= @charity.number %></strong>.
+								</p>
+								<p>
+									Please RSVP and let <%= @party.host %> know about your donation by visiting this URL: <a href="http://www.partyforhumanity.org/party/<%= @party.id %>?tk=<%= Base64.encode64(@guest.email).chomp %>">http://www.partyforhumanity.org/party/<%= @party.id %>?tk=<%= Base64.encode64(@guest.email).chomp %></a>
+								</p>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>
