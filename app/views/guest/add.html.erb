@@ -1,6 +1,18 @@
-<h1>Invite Some Guests to <%= link_to @party.name, edit_party_path(@party.id) %>!</h1>
+<h1>Invite Some Guests to</h1>
+<h1><%= link_to @party.name, edit_party_path(@party.id) %>!</h1>
 <h2>Current Guests</h2>
 <%= render 'list' %>
 <h2>Add a Guest</h2>
 <%= render 'form' %>
-<%= link_to 'Send Invites', view_party_path(params[:party_id]), :class => 'button right' %>
+<%= link_to 'View Party and Send Invites', view_party_path(params[:party_id]), :class => 'button right' %>
+
+<style type="text/css">
+	a.button {
+		margin-top: -2em;
+	}
+
+	.button {
+		clear: left;
+		display: block;
+	}
+</style>

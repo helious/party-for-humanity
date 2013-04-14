@@ -10,4 +10,4 @@
 <div>
 	<%= raw "Zip: #{@profile.zipcode.blank? ? link_to('Add Zip', edit_profile_path) : @profile.zipcode}" %>
 </div>
-<%= link_to 'Edit Profile', edit_profile_path %>
+<%= link_to 'Edit Profile', edit_profile_path, :class => 'button' %>

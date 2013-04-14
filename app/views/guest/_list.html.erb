@@ -2,7 +2,7 @@
 <div class="content-wrapper">
 	<table class="guest-list">
 		<tr>
-			<td><%= guest.name.blank? ? guest.email : guest.name %></td>
+			<td><%= guest.name.blank? ? guest.email : guest.name %><%= link_to '', edit_guest_path(guest.id, params[:party_id] || params[:id]), :class => 'icon-forward', :title => 'Edit Guest' if @is_party_owner %><%= link_to 'X', destroy_guest_path(guest.id, params[:party_id] || params[:id]), :title => 'Remove Guest' if @is_party_owner %></td>
 			<td class="rsvp"><%= get_rsvp_status guest %></td>
 			<td class="donation">Donated
 			<span class="amount"><%= get_donation_status guest %></span></td>

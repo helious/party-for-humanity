@@ -49,6 +49,10 @@ a:hover {
 	color: #2BA6CB;
 }
 
+a.button:hover {
+	color: #FFFFFF;
+}
+
 b {
 	font-weight: 600;
 	color: #BBB;

@@ -50,6 +50,16 @@ class PartyController < ApplicationController
 	  	setup
 	end
 
+	def destroy
+		if Party.destroy params[:id]
+			flash[:notice] = "Your party has been deleted!"
+		else
+	    	flash[:alert] = 'We were unable to delete your party at this time. Please try again in a few minutes.'
+	    end
+
+	    redirect_to my_account_path
+	end
+
 	def send_invites
 		Party.find_by_id(params[:id]).guests.each do |guest|
 			unless guest.invite_sent
@@ -74,14 +84,14 @@ class PartyController < ApplicationController
 
 	private
 	def setup
-	    @charities = [['', 0]]
+	    @charities = [['Pick a Charity!', nil]]
 
 	    Charity.all.each do |charity|
 	      charity_option = [charity.name, charity.id]
 	      @charities << [charity.name, charity.id] unless @charities.include?(charity_option)
 	    end
 
-	    @party_types = [['', '']]
+	    @party_types = [['Pick a Party Type!', '']]
 	    @party_types << ['Birth Shower', 'Birth Shower'] 
 	    @party_types << ['Birthday (Ages 0 to 5)', 'Birthday (Ages 0 to 5)']
 	    @party_types << ['Birthday (Ages 6 to 10)', 'Birthday (Ages 6 to 10)']
@@ -107,12 +117,5 @@ class PartyController < ApplicationController
 	    @party_types << ['Other General', 'Other General']
 	    @party_types << ['Other Holiday', 'Other Holiday']
 	end
-
-	def assert_ownership
-		unless current_user.parties.exists? :id => params[:id]
-			flash[:alert] = 'You can only view/edit your parties.'
-			redirect_to my_account_path
-		end
-	end
-
+	
 end

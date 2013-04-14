@@ -49,12 +49,10 @@
 }
 
 input[type="text"], input[type="email"], input[type="password"], textarea {
-	float: left;
 	width: 50%;
 	margin: 0 0 1em;
 	line-height: 1.5em;
-	padding-left: 0.65%;
-	clear: left;
+	padding-left: 0.5%;
 	min-width: 178px;
 	max-width: 356px;
 	height: 2em;
@@ -66,7 +64,6 @@ input[type="text"], input[type="email"], input[type="password"], textarea {
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
-	padding: 0 2%;
 }
 
 select {
@@ -76,6 +73,7 @@ select {
 	border: 1px solid #E3E3E3;
     font-family: Open Sans, Helvetica, Helvetica Neue, Arial;
     border-radius: 0 !important;
+    padding: 0 0;
 }
 
 .button {
@@ -99,11 +97,6 @@ select {
 form {
 	float: left;
 	width: 100%;
-
-	div {
-		float: left;
-		clear: left;
-	}
 }
 
 .field_with_errors {

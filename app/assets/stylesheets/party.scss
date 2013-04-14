@@ -7,3 +7,62 @@
     	color: #FFFFFF;
     }
 }
+
+#party_message {
+	margin: 1em 0 0;
+}
+
+#party_party_type, #party_charity_id {
+	width: 80%;
+}
+
+#party_charity_id {
+	margin-bottom: 0;
+}
+
+#charities-link {
+	display: block;
+	margin-bottom: 1em;
+}
+
+h3 {
+	margin: 0 0 0.25em;
+}
+
+select {
+	margin: 0 0 1em;
+}
+
+.field_with_errors {
+	width: 80%;
+	display: inline-block !important;
+	border-bottom: 1px solid red;
+	margin-bottom: 1em;
+
+	&:after {
+		content: '';
+		padding: 0;
+	}
+
+	select, input {
+		width: 100% !important;
+		margin-bottom: 0;
+	}
+}
+
+
+.button {
+	margin: 2.5em 0 0;
+}
+
+.right, .left {
+	width: 50%;
+}
+
+.left input, textarea {
+	width: 80%;
+}
+
+textarea {
+	height: 10em;
+}

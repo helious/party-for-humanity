@@ -2,7 +2,7 @@
 <div>
 <% @charities.each do |charity| %>
 	<div>
-		<%= link_to charity.name, edit_charity_path(charity.id) %>
+		<%= link_to (charity.name.blank? ? '(blank)' : charity.name), edit_charity_path(charity.id) %>
 	</div>
 <% end %>
 </div>

@@ -42,6 +42,14 @@ class GuestController < ApplicationController
 		redirect_to view_party_path(params[:party_id])
 	end
 
+	def destroy
+		unless Guest.destroy params[:id]
+			flash[:alert] = 'We were unable remove your guest.'
+		end
+
+		redirect_to add_guest_path(params[:party_id])
+	end
+
 	def is_guest_updating?
 		if params[:action] == 'update'
 			!session[:guest].nil? && Party.find_by_id(params[:party_id]).guests.include?(session[:guest])

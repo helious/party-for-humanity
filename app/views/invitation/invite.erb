@@ -183,7 +183,18 @@
 									<%= @party.host %> has asked that in lieu of gifts, donations be made to <%= @charity.name %>.
 								</p>
 								<p>
-									To donate, visit <strong><%= @charity.donation_url %></strong> or call <strong><%= @charity.number %></strong>.
+									<%
+										ways_to_donate = []
+										donate_message = ''
+										ways_to_donate << "visit <strong>#{@charity.donation_url}</strong>" unless @charity.donation_url.blank?
+										ways_to_donate << "call <strong>#{@charity.number}</strong>" unless @charity.number.blank?
+										way_counter = 0
+										ways_to_donate.each do |way|
+											donate_message += "#{' or ' if way_counter > 0}#{way} "
+											way_counter += 1
+										end
+									%>
+									To donate, <%= raw donate_message.chomp %>.
 								</p>
 								<p>
 									Please RSVP and let <%= @party.host %> know about your donation by visiting this URL: <a href="http://www.partyforhumanity.org/party/<%= @party.id %>?tk=<%= Base64.encode64(@guest.email).chomp %>">http://www.partyforhumanity.org/party/<%= @party.id %>?tk=<%= Base64.encode64(@guest.email).chomp %></a>

@@ -7,80 +7,18 @@
 		<%= f.text_field :city, :placeholder => 'City' %>
 		<%= f.text_field :zip, :placeholder => 'Zip' %>
 		<%= f.text_field :phone_number, :placeholder => 'Phone Number' %>
+		<%= f.text_area :message, :placeholder => 'Message to Guests' %>
 	</div>
 	<div class="right">
-		<div>
-			<div>
-				Type of Party
-			</div>
-			<div>
-				<%= f.select :party_type, @party_types %>
-			</div>
-		</div>
-		<div>
-			<div>
-				Pick a Date
-			</div>
-			<div>
-				<%= f.date_select :date, :start_year => Time.new.year %>
-			</div>
-		</div>
-		<div>
-			<div>
-				Pick a Start Time
-			</div>
-			<div>
-				<%= f.time_select :time %>
-			</div>
-		</div>
-		<div>
-			<div>
-				Pick an End Time
-			</div>
-			<div>
-				<%= f.time_select :end_time %>
-			</div>
-		</div>
-		<div>
-			<div>
-				Pick a Charity
-			</div>
-			<div>
-				<%= f.select :charity_id, @charities %>
-			</div>
-		</div>
-		<div>
-			<div>
-				Set a Goal
-			</div>
-			<div>
-				$<%= f.number_field :goal %>
-			</div>
-		</div>
-		<%= f.submit 'Continue', :class => 'button left' %>
+		<h3>Date</h3>
+		<%= f.date_select :date, :start_year => Time.new.year %>
+		<h3>From</h3>
+		<%= f.time_select :time, :ampm => true %> to <%= f.time_select :end_time, :ampm => true %>
+		<%= f.select :party_type, @party_types %>
+		<%= f.select :charity_id, @charities %>
+		<%= link_to 'Learn About the Charities', choose_path, :target => '_blank', :id => 'charities-link' %>
+		<h3>Donation Goal</h3>
+		$<%= f.number_field :goal, :placeholder => '0.00' %>
 	</div>
-	<%= f.text_area :message, :placeholder => 'Message to Guests' %>
+	<%= f.submit 'Continue', :class => 'button' %>
 <% end %>
-
-<style>
-.right, .left {
-	width: 50%;
-	clear: none;
-}
-
-.left input, textarea {
-	width: 80%;
-}
-
-textarea {
-	height: 10em;
-}
-
-.right {
-	float: right;
-}
-
-.left {
-	float: left;
-}
-</style>

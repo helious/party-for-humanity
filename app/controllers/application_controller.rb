@@ -21,7 +21,10 @@ class ApplicationController < ActionController::Base
   def assert_party_ownership(party_id)
     unless current_user.parties.exists? :id => party_id
       flash[:alert] = 'You can only view/edit your parties.'
+      @is_party_owner = false
       redirect_to my_account_path
+    else
+      @is_party_owner = true
     end
   end
 

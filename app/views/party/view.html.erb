@@ -4,7 +4,7 @@
 <div class="party-profile">
 	<div class="party-header">
 		<small>A party for</small>
-		<h2><%= @party.name %> <%= link_to '', edit_party_path(@party.id), :class => 'icon-forward' if @is_party_owner %></h2>
+		<h2><%= @party.name %> <%= link_to '', edit_party_path(@party.id), :class => 'icon-forward', :title => 'Edit Party' if @is_party_owner %></h2>
 	</div>
 	<div class="party-info">
 		<dl>
@@ -61,7 +61,7 @@
 					<small><%= get_time_difference comment.date.to_time %></small>
 					<span><%= comment.name %></span>
 				</div>
-				<p><%= comment.body %><% if @is_party_owner %><span class="icon-forward" title="Delete comment." alt="<%= comment.id %>"></span><% end %></p>
+				<p><%= comment.body %><% if @is_party_owner %><a class="delete" href="#" title="Delete comment" alt="<%= comment.id %>"> X</a><% end %></p>
 			</div>
 		</div>
 		<% end %>
@@ -94,29 +94,9 @@
 	<% end %>
 </div>
 
-<% @party.guests.each do |guest| %>
-<div class="guest">
-	<div class="left">
-		<span class="left">Name</span>
-		<span class="right"><%= "#{guest.name.blank? ? guest.email : guest.name}" %></span>
-	</div>
-	<%= form_for guest, :url => url_for(update_guest_path(guest.id, params[:id])) do |f| %>
-		<div class="left">
-			<span class="left">RSVP'd</span>
-			<span class="right"><%= f.select :rsvp, [['Yes!', true], ['Not Yet', false]], :selected =>(guest.rsvp.blank? ? false : true) %></span>
-		</div>
-		<div class="left">
-			<span class="left">Donation</span>
-			<span class="right">$<%= f.number_field :donation %></span>
-		</div>
-		<%= f.submit 'Update', :class => 'button right' %>
-	<% end %>
-</div>
-<% end if false #@is_party_owner %>
-
 <script type="text/javascript">
 $(function() {
-	$('.comments .icon-forward').css('cursor', 'pointer').on('click', function(e) {
+	$('.comments .delete').css('cursor', 'pointer').on('click', function(e) {
 		$.post('/comment/<%= params[:id] %>/' + $(this).attr('alt')).done(function(data) {
 			if (data === 'true')
 				$(e.target).closest('.content-wrapper').remove();

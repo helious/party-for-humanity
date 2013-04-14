@@ -3,7 +3,8 @@
 <div>
 	<%= link_to party.name, view_party_path(party.id) %> | 
 	<%= link_to 'Edit Party', edit_party_path(party.id) %> | 
-	<%= link_to 'Manage Guests', add_guest_path(party.id) %>
+	<%= link_to 'Manage Guests', add_guest_path(party.id) %> |
+	<%= link_to 'Delete Party', destroy_party_path(party.id) %>
 </div>
 <% end %>
-<%= link_to 'Organize a New Party!', organize_path %>
+<%= link_to 'Organize a New Party!', organize_path, :class => 'button' %>

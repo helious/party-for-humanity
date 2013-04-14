@@ -28,10 +28,10 @@
 					</a>
         </li>
         <li>
-				  <a id="organize" href="<%= organize_url %>">
-            Organize
+				  <a id="organize" href="<%= user_signed_in? ? my_account_url : organize_url %>">
+            <%= user_signed_in? ? 'Manage' : 'Organize' %>
 				    <span>
-              a party
+              <%= user_signed_in? ? 'your parties' : 'a party' %>
             </span>
 				    <div class="nav-icon">
             </div>
