@@ -1,6 +1,6 @@
 class GuestController < ApplicationController
 	before_filter { |c| 
-		unless c.is_guest_updating?
+		unless c.is_guest_updating? && params[:action] == 'destroy'
 			c.authenticate_user!
 			c.assert_party_ownership params[:party_id]
 		end
