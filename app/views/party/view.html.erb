@@ -9,13 +9,20 @@
 	<div class="party-info">
 		<dl>
 			<dt class="icon-user"></dt>
-			<dd>Hosted by <%= @party.host %></dd>
+			<dd>
+				Hosted by <%= @party.host %>
+				<%= @party.phone_number.blank? ? '' : raw("</br>#{@party.phone_number}") %>
+			</dd>
 			<dt class="icon-calendar"></dt>
 			<dd><%= @party.date.strftime '%m/%e/%Y' %></dd>
 			<dt class="icon-clock"></dt>
 			<dd><%= "#{@party.time.strftime '%l:%M %p'} to #{@party.end_time.strftime '%l:%M %p'}" %></dd>
 			<dt class="icon-location"></dt>
-			<dd><%= @party.location.blank? ? 'Undisclosed' : @party.location %></dd>
+			<dd>
+				<%= @party.location.blank? ? 'Undisclosed' : @party.location %>
+				<%= @party.address.blank? ? '' : raw("</br>#{@party.address}") %>
+				<%= @party.zip.blank? ? '' : raw("</br>#{@party.zip}") %>
+			</dd>
 		</dl>
 
 		<div class="progress">
