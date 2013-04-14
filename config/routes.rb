@@ -25,6 +25,10 @@ PartyForHumanity::Application.routes.draw do
   #Charities
   match '/choose' => 'static#choose', :as => :choose
   post '/choose' => 'static#choose'
+  get '/secret' => 'charity#list'
+  get '/secret/add' => 'charity#add', :as => :add_charity
+  get '/secret/:id' => 'charity#edit', :as => :edit_charity
+  put '/secret/:id' => 'charity#update', :as => :charity
 
   #Profile
   match '/profile/edit' => 'profile#edit', :as => :edit_profile

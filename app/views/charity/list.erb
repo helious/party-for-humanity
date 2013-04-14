@@ -1,0 +1,9 @@
+<h1>Charity List</h1>
+<div>
+<% @charities.each do |charity| %>
+	<div>
+		<%= link_to charity.name, edit_charity_path(charity.id) %>
+	</div>
+<% end %>
+</div>
+<%= link_to 'Add a new charity!', add_charity_path %>
