@@ -6,7 +6,11 @@ class PartyController < ApplicationController
 			c.authenticate_user!
 		end
 	}
-	before_filter { |c| c.assert_party_ownership params[:id] if params[:action] == 'edit' }
+	before_filter { |c|
+		if params[:action] == 'edit' || params[:action] == 'destroy'
+			c.assert_party_ownership params[:id] 
+		end
+	}
 
 	def create
 		@party = Party.new params[:party]
