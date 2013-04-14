@@ -50,7 +50,13 @@ class StaticController < ApplicationController
       redirect_to new_user_registration_path
     end
 
-    #ParentEmailClass.send params[:email] unless params[:email].blank?
+    unless params[:email].blank?
+      Invitation.to_parent(params[:email]).deliver
+
+      flash[:notice] = 'An e-mail has been sent to your parents!'
+
+      redirect_to root_url
+    end
   end
 
 end

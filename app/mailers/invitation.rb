@@ -13,4 +13,11 @@ class Invitation < ActionMailer::Base
 			format.html
 		end
 	end
+
+	def to_parent(email)
+		mail :to => email, :from => "Registration <registration@partyforhumanity.org>", :subject => "Registration - We Need Parental Confirmation" do |format|
+			format.text
+			format.html
+		end
+	end
 end
