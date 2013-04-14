@@ -3,7 +3,9 @@ class Devise::Custom::RegistrationsController < Devise::RegistrationsController
 
   	private
   	def age_gate_check
-  		redirect_to age_gate_url if session[:age_gate].blank?
+  		if session[:age_gate].blank? && params[:verified].nil?
+  			redirect_to age_gate_url
+  		end
   	end
 
 end

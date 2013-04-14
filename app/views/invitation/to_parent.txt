@@ -6,7 +6,7 @@ Party for Humanity takes no fee. ALL of your donations go directly to the charit
 
 Please see our Privacy Policy at http://www.partyforhumanity.org/privacy for more information.
 
-To protect minors, we require parent permission for children under 13 years to register on our website. Please visit https://www.partyforhumanity.org/users/sign_up to verify your permission and to complete your child's registration.
+To protect minors, we require parent permission for children under 13 years to register on our website. Please visit https://www.partyforhumanity.org/users/sign_up?verified=true to verify your permission and to complete your child's registration.
 
 Thank you,
 Party for Humanity
