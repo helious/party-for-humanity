@@ -20,6 +20,11 @@ ActiveRecord::Schema.define(:version => 20130413212416) do
 
   add_index "annoucements", ["party_id"], :name => "index_annoucements_on_party_id"
 
+  create_table "anoucements", :force => true do |t|
+    t.text    "body"
+    t.integer "party_id"
+  end
+
   create_table "charities", :force => true do |t|
     t.string "name"
     t.text   "description"
