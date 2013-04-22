@@ -1,4 +1,11 @@
+class NonNegativeValidator < ActiveModel::Validator
+	def validate record
+		record.errors[:base] << 'Please choose a goal greater than $0.' if (!record.goal.nil? && record.goal < 0)
+	end
+end
+
 class Party < ActiveRecord::Base
+	include ActiveModel::Validations
 	belongs_to :user
 	has_many :guests, :dependent => :destroy
 	has_many :annoucements, :dependent => :destroy
@@ -10,6 +17,7 @@ class Party < ActiveRecord::Base
 					:user_id, :goal, :end_time
 
 	validates_presence_of :name, :user_id, :goal, :host, :charity_id
+	validates_with NonNegativeValidator
 
 	#TODO: Validation.
 end
