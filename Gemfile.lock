@@ -34,7 +34,6 @@ GEM
       multi_json (~> 1.0)
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
-    bcrypt-ruby (3.0.1-x86-mingw32)
     builder (3.0.4)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -51,7 +50,6 @@ GEM
       warden (~> 1.2.1)
     erubis (2.7.0)
     eventmachine (1.0.3)
-    eventmachine (1.0.3-x86-mingw32)
     execjs (1.4.0)
       multi_json (~> 1.0)
     faraday (0.8.7)
@@ -72,13 +70,11 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    mime-types (1.22)
+    mime-types (1.23)
     multi_json (1.7.2)
     multipart-post (1.2.0)
     mysql (2.9.1)
-    mysql (2.9.1-x86-mingw32)
     mysql2 (0.3.11)
-    mysql2 (0.3.11-x86-mingw32)
     oauth2 (0.8.1)
       faraday (~> 0.8)
       httpauth (~> 0.1)
@@ -121,7 +117,7 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     ref (1.0.4)
-    sass (3.2.7)
+    sass (3.2.8)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
@@ -152,7 +148,6 @@ GEM
 
 PLATFORMS
   ruby
-  x86-mingw32
 
 DEPENDENCIES
   activerecord-mysql-adapter
