@@ -40,4 +40,5 @@ PartyForHumanity::Application.configure do
       :address              => "localhost",
       :port                 => 25
   }
+  config.action_mailer.default_url_options = { :host => 'localhost' }
 end
