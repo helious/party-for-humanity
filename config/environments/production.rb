@@ -73,4 +73,6 @@ PartyForHumanity::Application.configure do
       :port                 => 25,
       :domain => 'partyforhumanity.org'
   }
+  config.action_mailer.perform_deliveries = true 
+  config.action_mailer.raise_delivery_errors = true
 end
