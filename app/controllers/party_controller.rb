@@ -67,7 +67,7 @@ class PartyController < ApplicationController
 	def send_invites
 		Party.find_by_id(params[:id]).guests.each do |guest|
 			unless guest.invite_sent
-				Invitation.invite(guest, Party.find_by_id(params[:id])).deliver
+				Invitation.invite(guest, Party.find_by_id(params[:id])).deliver!
 			end
 		end
 
