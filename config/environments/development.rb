@@ -38,7 +38,7 @@ PartyForHumanity::Application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
       :address              => "localhost",
-      :port                 => 25
+      :port                 => 25,
+      :domain => 'partyforhumanity.org'
   }
-  config.action_mailer.default_url_options = { :host => 'localhost' }
 end

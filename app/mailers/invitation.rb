@@ -3,10 +3,12 @@ class Invitation < ActionMailer::Base
 		"{\"category\": \"#{type}\"}"
 	end
 
-	def invite(guest, party)
+	def invite guest, party
+		headers "X-SMTPAPI" => category_header(:email_party_invite)
+
 		@guest = guest
 		@party = party
-		headers "X-SMTPAPI" => category_header(:email_party_invite)
+
 		guest.invite_sent = true
 		guest.save
 
