@@ -6,6 +6,7 @@
 <% elsif params[:action] != 'new' && params[:controller] != 'devise/sessions' %>
 	<div id="login">
 		<%= link_to 'Login', new_user_session_path %>
-		<%= link_to ' | Sign up', '/users/sign_up' %>
+		 | 
+		<%= link_to 'Sign up', '/users/sign_up' %>
 	</div>
 <% end %>

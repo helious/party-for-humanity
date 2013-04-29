@@ -10,11 +10,6 @@ gem 'therubyracer'
 gem 'mysql2'
 gem 'activerecord-mysql-adapter'
 
-
-group :production do
-  gem 'thin'
-end
-
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
@@ -26,3 +21,5 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'mail'
+gem 'devise-twitter'
+gem 'thin'
