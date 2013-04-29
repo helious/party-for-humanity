@@ -4,7 +4,6 @@ PartyForHumanity::Application.routes.draw do
     match '/user/connect/twitter' => Devise::Twitter::Rack::Connect
   end
 
-
   devise_for :users, :controllers => { :omniauth_callbacks => 'users/omniauth_callbacks', :registrations => 'devise/custom/registrations' }
 
   #"Static"
