@@ -1,7 +1,7 @@
 class CharityController < ApplicationController
 
 	def list
-		@charities = Charity.all.order 'name'
+		@charities = Charity.all
 	end
 
 	def edit

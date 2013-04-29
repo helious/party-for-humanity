@@ -8,7 +8,7 @@ class StaticController < ApplicationController
   end
   
   def choose
-    @charities = Charity.where '(LOWER(name) LIKE :name or LOWER(description) LIKE LOWER(:name)) and category LIKE :category', { :name => "%#{params[:keyword]}%", :category => "%#{params[:category]}%" }
+    @charities = Charity.where('(LOWER(name) LIKE :name or LOWER(description) LIKE LOWER(:name)) and category LIKE :category', { :name => "%#{params[:keyword]}%", :category => "%#{params[:category]}%" }).order 'name'
     
     @charity_categories = [['...or choose a category!', '']]
 
