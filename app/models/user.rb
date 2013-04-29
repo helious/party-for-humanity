@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :omniauthable, :omniauth_providers => [:facebook]
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :trackable :twitter_oauth
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :trackable, :twitter_oauth
   after_save :create_profile
   has_one :profile, :dependent => :destroy
   has_many :parties
