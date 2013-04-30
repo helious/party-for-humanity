@@ -40,8 +40,6 @@ class User < ActiveRecord::Base
       user.profile.name = auth.extra.raw_info.name
       user.profile.username = auth.extra.raw_info.username
 
-      Rails.logger.info auth.extra.raw_info
-
       user.profile.save
     end
 
@@ -52,12 +50,10 @@ class User < ActiveRecord::Base
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
 
     unless user
-      user = User.create(provider:auth.provider, uid:auth.uid, email: "#{auth.extra.raw_info.screen_name}@twitter.com", password:Devise.friendly_token[0,20])
+      user = User.create(provider:auth.provider, uid:auth.uid, email:"#{auth.extra.raw_info.screen_name}@twitter.com", password:Devise.friendly_token[0,20])
 
       user.profile.name = auth.extra.raw_info.name
       user.profile.username = auth.extra.raw_info.screen_name
-
-      Rails.logger.info auth.extra.raw_info
 
       user.profile.save
     end
