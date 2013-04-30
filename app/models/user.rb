@@ -36,7 +36,8 @@ class User < ActiveRecord::Base
 
     unless user
       user = User.create(provider:auth.provider, uid:auth.uid, email:auth.info.email, password:Devise.friendly_token[0,20])
-
+      
+      user.create_profile
       user.profile.name = auth.extra.raw_info.name
       user.profile.username = auth.extra.raw_info.username
 
@@ -52,6 +53,7 @@ class User < ActiveRecord::Base
     unless user
       user = User.create(provider:auth.provider, uid:auth.uid, email:"#{auth.extra.raw_info.screen_name}@twitter.com", password:Devise.friendly_token[0,20])
 
+      user.create_profile
       user.profile.name = auth.extra.raw_info.name
       user.profile.username = auth.extra.raw_info.screen_name
 
