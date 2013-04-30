@@ -35,12 +35,7 @@ class User < ActiveRecord::Base
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
 
     unless user
-      user = User.create(provider:auth.provider, uid:auth.uid, email:auth.info.email, password:Devise.friendly_token[0,20])
-
-      user.profile.name = auth.extra.raw_info.name
-      user.profile.username = auth.extra.raw_info.username
-
-      user.profile.save
+      user = User.create(provider:auth.provider, uid:auth.uid, email:auth.info.email, password:Devise.friendly_token[0,20], :profile_attributes => { :name => auth.extra.raw_info.name, :username => auth.extra.raw_info.username })
     end
 
     user
@@ -50,14 +45,7 @@ class User < ActiveRecord::Base
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
 
     unless user
-      user = User.create(provider:auth.provider, uid:auth.uid, email:"#{auth.extra.raw_info.screen_name}@twitter.com", password:Devise.friendly_token[0,20])
-
-      user.profile.name = auth.extra.raw_info.name
-      user.profile.username = auth.extra.raw_info.screen_name
-
-      p user.profile
-
-      user.profile.save
+      user = User.create(provider:auth.provider, uid:auth.uid, email:"#{auth.extra.raw_info.screen_name}@twitter.com", password:Devise.friendly_token[0,20], :profile_attributes => { :name => auth.extra.raw_info.name, :username => auth.extra.raw_info.screen_name })
     end
 
     user
