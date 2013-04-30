@@ -51,10 +51,10 @@ class User < ActiveRecord::Base
   def self.find_for_twitter_oauth(auth, signed_in_resource = nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
 
-    p auth.extra
     unless user
       user = User.create(provider:auth.provider, uid:auth.uid, email:auth.info.email, password:Devise.friendly_token[0,20])
-
+      p user.id
+      p '##############'
       user.profile.name = auth.extra.raw_info.name
       user.profile.username = auth.extra.raw_info.username
 
