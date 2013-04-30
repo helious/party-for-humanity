@@ -54,6 +54,9 @@ class User < ActiveRecord::Base
     unless user
       user = User.create(provider:auth.provider, uid:auth.uid, email: "#{auth.extra.raw_info.username}@twitter.com", password:Devise.friendly_token[0,20])
 
+      p auth.extra.raw_info
+      p auth.extra.raw_info.screename
+
       user.profile.name = auth.extra.raw_info.name
       user.profile.username = auth.extra.raw_info.username
 
