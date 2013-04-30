@@ -25,11 +25,10 @@ class User < ActiveRecord::Base
   end
 
   def create_profile
-    p self.profile
     if self.profile.nil?
-      profile = Profile.new({ :username => '', :name => '', :zipcode => '' })
-      profile.user_id = self.uid
-      profile.save
+      self.profile = Profile.new({ :username => '', :name => '', :zipcode => '' })
+      self.profile.user_id = self.uid
+      self.profile.save
     end
   end
 
