@@ -23,10 +23,17 @@
     <div id="fb"></div>
     <%= link_to "Sign In with Facebook", user_omniauth_authorize_path(:facebook), :id => 'fb-login' %>
   </div>
-  <%= link_to "Twitter", user_omniauth_authorize_path(:twitter) %>
+  <%= link_to '', user_omniauth_authorize_path(:twitter), :id => 'twitter-login' %>
 <% end -%>
 
 <style>
+#twitter-login {
+  background-image: url(https://dev.twitter.com/sites/default/files/images_documentation/sign-in-with-twitter-gray.png);
+  width: 158px;
+  height: 28px;
+  display: block;
+}
+
 #fb {
 	background-image: url("https://fbstatic-a.akamaihd.net/rsrc.php/v2/y6/x/S-DbSHszr4D.png");
     background-repeat: no-repeat;
