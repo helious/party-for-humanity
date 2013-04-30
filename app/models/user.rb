@@ -26,7 +26,8 @@ class User < ActiveRecord::Base
 
   def create_profile
     if self.profile.nil?
-      self.profile = Profile.new({ :username => '', :name => '', :zipcode => '', :user_id => self.uid })
+      self.profile = Profile.new({ :username => '', :name => '', :zipcode => '' })
+      self.profile.user_id = self.uid
       self.profile.save
     end
   end
@@ -50,10 +51,10 @@ class User < ActiveRecord::Base
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
 
     unless user
-      user = User.create(provider:auth.provider, uid:auth.uid, email:"#{auth.extra.raw_info.screen_name.to_s}@twitter.com", password:Devise.friendly_token[0,20])
+      user = User.create(provider:auth.provider, uid:auth.uid, email:"#{auth.extra.raw_info.screen_name}@twitter.com", password:Devise.friendly_token[0,20])
 
-      user.profile.name = auth.extra.raw_info.name.to_s
-      user.profile.username = auth.extra.raw_info.screen_name.to_s
+      user.profile.name = auth.extra.raw_info.name
+      user.profile.username = auth.extra.raw_info.screen_name
 
       p user.profile
 
