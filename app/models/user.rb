@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :omniauthable, :omniauth_providers => [:facebook, :twitter]
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :trackable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :trackable, :validatable
   after_save :create_profile
   has_one :profile, :dependent => :destroy
   has_many :parties
@@ -51,6 +51,7 @@ class User < ActiveRecord::Base
   def self.find_for_twitter_oauth(auth, signed_in_resource = nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
 
+    p auth
     unless user
       user = User.create(provider:auth.provider, uid:auth.uid, email:auth.info.email, password:Devise.friendly_token[0,20])
 

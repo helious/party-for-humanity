@@ -241,4 +241,6 @@ Devise.setup do |config|
   require 'omniauth-facebook'
   OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE if Rails.env.development? 
   config.omniauth :facebook, '481127335269353', '22bcc77fe749311e471416d9384959f0', { :scope => 'email, offline_access', :client_options => { :ssl => { :ca_file => '/usr/lib/ssl/certs/ca-certificates.crt' } } } 
+  require 'omniauth-twitter'
+  config.omniauth :twitter, 'ghlENwpIaGPRaiCCmWkA', 'l20owdT15jLqLtOJ1u5j8B2H1rWp0HrlXQI0yYCqFc'
 end

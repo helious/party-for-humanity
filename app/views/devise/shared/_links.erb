@@ -19,12 +19,11 @@
 <% end -%>
 
 <%- if devise_mapping.omniauthable? %>
-  <%- resource_class.omniauth_providers.each do |provider| %>
-    <div id="fb-container">	
-    	<div id="fb"></div>
-    	<%= link_to "Sign In with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider), :id => 'fb-login' %>
-	</div>
-  <% end -%>
+  <div id="fb-container"> 
+    <div id="fb"></div>
+    <%= link_to "Sign In with Facebook", user_omniauth_authorize_path(:facebook), :id => 'fb-login' %>
+  </div>
+  <%= link_to "Twitter", user_omniauth_authorize_path(:twitter) %>
 <% end -%>
 
 <style>
