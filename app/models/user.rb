@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
 
   def create_profile
     if self.profile.nil?
-      self.profile = Profile.new({ :username => '', :name => '', :zipcode => '' })
+      self.profile = Profile.new({ :username => nil, :name => nil, :zipcode => nil })
       self.profile.save
     end
   end
