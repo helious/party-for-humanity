@@ -2,6 +2,14 @@
   <%= link_to "Sign in", new_session_path(resource_name) %><br />
 <% end -%>
 
+<%- if devise_mapping.omniauthable? %>
+  <div id="fb-container"> 
+    <div id="fb"></div>
+    <%= link_to "Sign In with Facebook", user_omniauth_authorize_path(:facebook), :id => 'fb-login' %>
+  </div>
+  <%= link_to '', user_omniauth_authorize_path(:twitter), :id => 'twitter-login' %>
+<% end -%>
+
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
   <%= link_to "Sign up", new_registration_path(resource_name) %><br />
 <% end -%>
@@ -18,20 +26,13 @@
   <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %><br />
 <% end -%>
 
-<%- if devise_mapping.omniauthable? %>
-  <div id="fb-container"> 
-    <div id="fb"></div>
-    <%= link_to "Sign In with Facebook", user_omniauth_authorize_path(:facebook), :id => 'fb-login' %>
-  </div>
-  <%= link_to '', user_omniauth_authorize_path(:twitter), :id => 'twitter-login' %>
-<% end -%>
-
 <style>
 #twitter-login {
   background-image: url(https://dev.twitter.com/sites/default/files/images_documentation/sign-in-with-twitter-gray.png);
   width: 158px;
   height: 28px;
   display: block;
+  margin-top: 0.25em;
 }
 
 #fb {
@@ -52,7 +53,9 @@
     border-top: 1px solid #29447E;
     display: inline-block;
     height: 20px;
-    font-size: 16px;
+    line-height: 20px;
+    font-size: 12px;
+    padding: 0 1%;
     float: left;
 }
 
