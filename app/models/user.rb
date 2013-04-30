@@ -2,8 +2,8 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
-  devise :omniauthable, :omniauth_providers => [:facebook]
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :trackable, :twitter
+  devise :omniauthable, :omniauth_providers => [:facebook, :twitter]
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :trackable
   after_save :create_profile
   has_one :profile, :dependent => :destroy
   has_many :parties
@@ -32,6 +32,23 @@ class User < ActiveRecord::Base
   end
 
   def self.find_for_facebook_oauth(auth, signed_in_resource = nil)
+    user = User.where(:provider => auth.provider, :uid => auth.uid).first
+
+    unless user
+      user = User.create(provider:auth.provider, uid:auth.uid, email:auth.info.email, password:Devise.friendly_token[0,20])
+
+      user.profile.name = auth.extra.raw_info.name
+      user.profile.username = auth.extra.raw_info.username
+
+      Rails.logger.info auth.extra.raw_info
+
+      user.profile.save
+    end
+
+    user
+  end
+
+  def self.find_for_twitter_oauth(auth, signed_in_resource = nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
 
     unless user

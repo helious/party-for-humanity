@@ -16,9 +16,13 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'mail'
+gem 'thin'
 gem 'jquery-rails'
+
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
-gem 'mail'
-gem 'thin'
+gem 'omniauth-twitter'
+gem 'twitter'
+gem 'fb_graph'
