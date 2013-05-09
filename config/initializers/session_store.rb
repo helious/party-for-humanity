@@ -5,4 +5,4 @@ PartyForHumanity::Application.config.session_store :cookie_store, key: '_party-f
 # Use the database for sessions instead of the cookie-based default,
 # which shouldn't be used to store highly confidential information
 # (create the session table with "rails generate session_migration")
-# PartyForHumanity::Application.config.session_store :active_record_store
+PartyForHumanity::Application.config.session_store :active_record_store
