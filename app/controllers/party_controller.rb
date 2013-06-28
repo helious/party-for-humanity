@@ -88,7 +88,7 @@ class PartyController < ApplicationController
 	def setup
 	    @charities = [['Pick a Charity!', nil]]
 
-	    Charity.all.order('name').each do |charity|
+	    Charity.order('name').all.each do |charity|
 	      charity_option = [charity.name, charity.id]
 	      @charities << [charity.name, charity.id] unless @charities.include?(charity_option)
 	    end
