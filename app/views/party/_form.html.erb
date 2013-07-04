@@ -13,7 +13,7 @@
 		<h3>Date</h3>
 		<%= f.date_select :date, :start_year => Time.new.year %>
 		<h3>From</h3>
-		<%= f.time_select :time, :ampm => true %> to <%= f.time_select :end_time, :ampm => true %>
+		<%= f.time_select :time, { :ampm => true, :minute_step => 15 } %> to <%= f.time_select :end_time, { :ampm => true, :minute_step => 15 } %>
 		<%= f.select :party_type, @party_types %>
 		<%= f.select :charity_id, @charities %>
 		<%= link_to 'Learn About the Charities', choose_path, :target => '_blank', :id => 'charities-link' %>
