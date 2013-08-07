@@ -1,13 +1,21 @@
 <%= form_for @party, :url => { :action => params[:action] } do |f| %>
 	<div class="left"> 
-		<%= f.text_field :name, :placeholder => 'Event Name' %>
-		<%= f.text_field :host, :placeholder => 'Hosted By' %>
-		<%= f.text_field :location, :placeholder => 'Location' %>
-		<%= f.text_field :address, :placeholder => 'Address' %>
-		<%= f.text_field :city, :placeholder => 'City' %>
-		<%= f.text_field :zip, :placeholder => 'Zip' %>
-		<%= f.phone_field :phone_number, :placeholder => 'Phone Number', :maxlength => 10 %>
-		<%= f.text_area :message, :placeholder => 'Message to Guests' %>
+		<%= label_tag :party_name %>
+		<%= f.text_field :name %>
+		<%= label_tag :hosted_by %>
+		<%= f.text_field :host %>
+		<%= label_tag :location %>
+		<%= f.text_field :location %>
+		<%= label_tag :address %>
+		<%= f.text_field :address %>
+		<%= label_tag :city %>
+		<%= f.text_field :city %>
+		<%= label_tag :zip %>
+		<%= f.text_field :zip %>
+		<%= label_tag :phone_number %>
+		<%= f.phone_field :phone_number, :maxlength => 10 %>
+		<%= label_tag :message_to_guests %>
+		<%= f.text_area :message %>
 	</div>
 	<div class="right">
 		<h3>Date</h3>

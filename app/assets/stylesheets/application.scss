@@ -179,3 +179,34 @@ form {
 #fb-container {
 	height: 22px;
 }
+
+.main > a {
+	clear: both;
+}
+
+.main > form {
+	float: left;
+}
+
+.edit_party label, .new_party label {
+	width: 100%;
+	display: block;
+	font-size: 19.2px;
+	font-weight: 700;
+	text-transform: capitalize;
+}
+
+#add-guest-form label {
+	text-transform: capitalize;
+	font-weight: 700;
+	width: 46.5%;
+	display: inline-block;
+	text-align: right;
+	padding-right: 2.5%;
+}
+
+#add-guest-form {
+	padding-top: 2em;
+	clear: both;
+	display: none;
+}

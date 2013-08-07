@@ -58,6 +58,15 @@
 				<%= link_to 'Invite Guests', add_guest_path(@party.id) %>
 			</div>
 		</div>
+		<div id="add-guest-form">
+			<form>
+				<%= label_tag 'Guest\'s Name' %>
+				<%= text_field_tag :name, '' %>
+				<%= label_tag 'Guest\'s Email' %>
+				<%= text_field_tag :email, '' %>
+				<input id="guest-add" class="button right" type="submit" value="Add">
+			</form>
+		</div>
 		<% end %>
 	</section>
 	
@@ -120,6 +129,23 @@ $(function() {
 		});
 
 		$(this).children('.comment-box').val('');
+	});
+
+	$('#guest-add').on('click', function(e) {
+		e.preventDefault();
+		var name = $('#name').val();
+		var email = $('#email').val();
+
+		$('#email, #name').val('');
+
+		$.ajax({
+			method: 'post',
+			url: '/a/guest/party/<%= params[:id] %>',
+			data: { name: name, email: email },
+			success: function(data) {
+				$('#guest-list').html($(data).find('#guest-list').html());
+			}
+		})
 	});
 });
 </script>

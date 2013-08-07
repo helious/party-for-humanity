@@ -18,6 +18,7 @@ PartyForHumanity::Application.routes.draw do
   #Guest
   match '/guest/party/:party_id' => 'guest#add', :as => :add_guest
   post '/guest/party/:party_id' => 'guest#add'
+  post '/a/guest/party/:party_id' => 'guest#ajax_add'
   match '/guest/:id/party/:party_id' => 'guest#edit', :as => :edit_guest
   match '/guest/destroy/:id/party/:party_id' => 'guest#destroy', :as => :destroy_guest
   put '/guest/:id/party/:party_id' => 'guest#edit'

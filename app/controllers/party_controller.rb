@@ -21,7 +21,7 @@ class PartyController < ApplicationController
 		if request.post?
 
 	      if @party.save
-	        return redirect_to add_guest_path(@party.id)
+	        return redirect_to view_party_path(@party.id)
 	      else
 	      	@party.errors.full_messages.each do |message|
 	      		flash[:alert] = message

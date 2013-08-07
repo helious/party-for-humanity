@@ -23,6 +23,22 @@ class GuestController < ApplicationController
 		end
 	end
 
+	def ajax_add
+		@guest = Guest.new
+		@guest.party_id = params[:party_id]
+		@guest.name = params[:name]
+		@guest.email = params[:email]
+
+		if request.post?
+			if @guest.save
+				@party = Party.find params[:party_id]
+				@guests = @party.guests
+			else
+				@guests = nil
+			end
+		end
+	end
+
 	def edit
 		if request.put?
 			if Guest.update params[:id], params[:guest]
