@@ -10,8 +10,6 @@ class Invitation < ActionMailer::Base
 		@party = party
 		@charity = Charity.find_by_id party.charity_id
 
-		p @guest.email
-
 		mail :to => guest.email, :from => "party@partyforhumanity.org", :subject => "#{party.name} - You're Invited!" do |format|
 			format.text
 			format.html

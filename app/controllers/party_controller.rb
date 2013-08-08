@@ -65,8 +65,14 @@ class PartyController < ApplicationController
 	end
 
 	def send_invites
-		Party.find_by_id(params[:id]).guests.each do |guest|
-			Invitation.invite(guest, Party.find_by_id(params[:id])).deliver unless guest.invite_sent
+		party =  Party.find_by_id params[:id]
+
+		party.guests.each do |guest|
+			Invitation.invite(guest, party).deliver
+
+			guest.invite_sent = true
+
+			guest.save
 		end
 
 		flash[:notice] = 'Your guests have been invited via e-mail!'
