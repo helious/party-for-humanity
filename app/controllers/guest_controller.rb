@@ -1,8 +1,10 @@
 class GuestController < ApplicationController
 	before_filter { |c| 
-		unless c.is_guest_updating? && params[:action] == 'destroy'
-			c.authenticate_user!
-			c.assert_party_ownership params[:party_id]
+		unless params[:action] == 'destroy'
+			unless c.is_guest_updating?
+				c.authenticate_user!
+				c.assert_party_ownership params[:party_id]
+			end
 		end
 	}
 
@@ -67,7 +69,11 @@ class GuestController < ApplicationController
 	end
 
 	def is_guest_updating?
+		p '##########'
+		p params[:action]
 		if params[:action] == 'update'
+			p 'AM I SESSION GUEST?'
+			p !session[:guest].nil? && Party.find_by_id(params[:party_id]).guests.include?(session[:guest])
 			!session[:guest].nil? && Party.find_by_id(params[:party_id]).guests.include?(session[:guest])
 		else
 			false
