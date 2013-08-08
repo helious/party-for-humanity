@@ -42,7 +42,7 @@ class GuestController < ApplicationController
 	def edit
 		if request.put?
 			if Guest.update params[:id], params[:guest]
-				redirect_to add_guest_path(params[:party_id])
+				redirect_to view_party_path(params[:party_id])
 			end
 		end
 
@@ -63,7 +63,7 @@ class GuestController < ApplicationController
 			flash[:alert] = 'We were unable remove your guest.'
 		end
 
-		redirect_to add_guest_path(params[:party_id])
+		redirect_to view_party_path(params[:party_id])
 	end
 
 	def is_guest_updating?
