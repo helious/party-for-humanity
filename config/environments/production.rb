@@ -18,7 +18,7 @@ PartyForHumanity::Application.configure do
   config.assets.compile = true
 
 
-  #config.assets.precompile += %w( *.js *.css *.scss )
+  config.assets.precompile += %w( *.js *.css *.scss )
   # Generate digests for assets URLs
   config.assets.digest = true
 
