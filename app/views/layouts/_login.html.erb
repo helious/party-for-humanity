@@ -1,12 +1,15 @@
+<div id="login">
 <% if user_signed_in? %>
-	<div id="login">
 		<%= "Hello, #{@profile.name.blank? ? current_user.email : @profile.name}!" %>
 		<%= link_to 'Your Account', my_account_path %>|<%= link_to 'Logout', destroy_user_session_path, :method => 'delete' %>
-	</div>
+		<% divider = '| ' %>
 <% elsif params[:action] != 'new' && params[:controller] != 'devise/sessions' %>
-	<div id="login">
 		<%= link_to 'Login', new_user_session_path %>
 		 | 
 		<%= link_to 'Sign up', '/users/sign_up' %>
-	</div>
+		<% divider = '| ' %>
 <% end %>
+<% if !session[:guest].nil? || user_signed_in? %>
+	<%= divider %><%= link_to 'Invitations', party_list_path %>
+<% end %>
+</div>

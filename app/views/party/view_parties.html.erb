@@ -1,0 +1,8 @@
+<% if @parties.empty? %>
+<h1>You haven't been invited to any parties yet!</h1>
+<% else %>
+<h1>Parties you've been invited to:</h1>
+<% @parties.each do |party| %>
+	<%= link_to party.name, view_party_path(party.id) %>	
+<% end %>
+<% end %>

@@ -110,6 +110,23 @@ class PartyController < ApplicationController
 		redirect_to view_party_path(params[:id])
 	end
 
+	def view_parties
+		email = session[:guest].email unless session[:guest].nil?
+		email = current_user.email unless current_user.nil?
+
+		guests = Guest.find_by_email email
+
+		if guests.is_a? Array
+			@parties = []
+
+			guests.each do |guest|
+				@parties << Party.find_by_id(guest.party_id) 
+			end
+		elsif guests.is_a? Guest
+			@parties = [ Party.find_by_id(guests.party_id) ]
+		end
+	end
+
 	def is_party_guest?
 		session[:guest] = Guest.find_by_email(Base64.decode64 params[:tk]) unless params[:tk].blank?
 
