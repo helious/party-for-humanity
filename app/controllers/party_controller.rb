@@ -2,7 +2,7 @@ class PartyController < ApplicationController
 	before_filter { |c|
 		if params[:action] == 'view'
 			c.authenticate_user! unless c.is_party_guest?
-		else
+		elsif params[:action] != 'view_parties'
 			c.authenticate_user!
 		end
 	}
