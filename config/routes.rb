@@ -43,6 +43,7 @@ PartyForHumanity::Application.routes.draw do
   match '/organize' => 'party#create', :as => :organize
   post '/organize' => 'party#create', :as => :parties
   get '/party/destroy/:id' => 'party#destroy', :as => :destroy_party
+  get '/party/:guest_id/:id/send-invite' => 'party#send_invite', :as => :email_guest
 
   #Comments
   post '/comment/:id' => 'comment#post'

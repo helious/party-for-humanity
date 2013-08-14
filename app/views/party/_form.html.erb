@@ -28,5 +28,7 @@
 		<h3>Donation Goal</h3>
 		$<%= f.number_field :goal, :placeholder => '0.00' %>
 	</div>
+	<%= label_tag :attending_label, 'Will you be attending?', { :style => 'display: inline; line-height: 4em;' } %>
+	<%= check_box_tag :attending, true, !Guest.find_by_email_and_party_id(current_user.email, params[:id]).blank? %>
 	<%= f.submit 'Continue', :class => 'button' %>
 <% end %>

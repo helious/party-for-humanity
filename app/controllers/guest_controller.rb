@@ -39,6 +39,8 @@ class GuestController < ApplicationController
 				@guests = nil
 			end
 		end
+
+		render :layout => false
 	end
 
 	def edit
@@ -69,12 +71,8 @@ class GuestController < ApplicationController
 	end
 
 	def is_guest_updating?
-		p '##########'
-		p params[:action]
 		if params[:action] == 'update'
-			p 'AM I SESSION GUEST?'
-			p !session[:guest].nil? && Party.find_by_id(params[:party_id]).guests.include?(session[:guest])
-			!session[:guest].nil? && Party.find_by_id(params[:party_id]).guests.include?(session[:guest])
+			(!session[:guest].nil? && Party.find_by_id(params[:party_id]).guests.include?(session[:guest])) || (!Guest.find_by_email_and_party_id(current_user.email, params[:party_id]).nil?)
 		else
 			false
 		end

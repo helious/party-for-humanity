@@ -21,6 +21,13 @@ class PartyController < ApplicationController
 		if request.post?
 
 	      if @party.save
+	      	if params[:attending]
+	      		guest = Guest.new party_id: @party.id, email: current_user.email
+	      		guest.name = current_user.profile.name unless current_user.profile.name.blank?
+
+	      		guest.save
+	      	end
+
 	        return redirect_to view_party_path(@party.id)
 	      else
 	      	@party.errors.full_messages.each do |message|
@@ -45,7 +52,14 @@ class PartyController < ApplicationController
 	def edit
 		if request.put?
 	      if Party.update params[:id], params[:party]
-	        return redirect_to my_account_path
+	      	if params[:attending] && Guest.find_by_email_and_party_id(current_user.email, params[:id]).blank?
+	      		guest = Guest.new party_id: params[:id], email: current_user.email
+	      		guest.name = current_user.profile.name unless current_user.profile.name.blank?
+
+	      		guest.save
+	      	end
+
+	        return redirect_to view_party_path(params[:id])
 	      end
 	  	end
 
@@ -68,14 +82,30 @@ class PartyController < ApplicationController
 		party =  Party.find_by_id params[:id]
 
 		party.guests.each do |guest|
-			Invitation.invite(guest, party).deliver
+			unless guest.invite_sent
+				Invitation.invite(guest, party).deliver
 
-			guest.invite_sent = true
+				guest.invite_sent = true
 
-			guest.save
+				guest.save
+			end
 		end
 
 		flash[:notice] = 'Your guests have been invited via e-mail!'
+
+		redirect_to view_party_path(params[:id])
+	end
+
+	def send_invite
+		party =  Party.find_by_id params[:id]
+		guest = Guest.find_by_id params[:guest_id]
+
+		Invitation.invite(guest, party).deliver
+
+		guest.invite_sent = true
+		guest.save
+
+		flash[:notice] = "#{guest.name || guest.email} has been invited via e-mail!"
 
 		redirect_to view_party_path(params[:id])
 	end

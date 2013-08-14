@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :create_profile_reference, :if => Proc.new { user_signed_in? }
-  before_filter :assign_common_globals
+  before_filter :assign_common_globals, :clear_session_guest_if_logged_in
   before_filter :clean_params_of_default_rails_form_param_additions, :if => Proc.new { params[:controller] == 'messages' }
 
   def assign_common_globals
@@ -26,6 +26,10 @@ class ApplicationController < ActionController::Base
     else
       @is_party_owner = true
     end
+  end
+
+  def clear_session_guest_if_logged_in
+    session.delete :guest unless current_user.nil?
   end
 
 end

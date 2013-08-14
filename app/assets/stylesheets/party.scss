@@ -66,3 +66,13 @@ select {
 textarea {
 	height: 10em;
 }
+
+a[title="Email Guest"] img {
+	height: 1.35em;
+	width: 1.75em;
+	margin-left: 5%;
+
+	&:hover {
+		background: #2BA6CB;
+	}
+}

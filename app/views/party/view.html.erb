@@ -69,6 +69,8 @@
 		</div>
 		<% end %>
 	</section>
+
+	<%= render 'guest/edit' %>
 	
 	<section class="party comments">
 		<h2>Comments</h2>
@@ -91,25 +93,6 @@
 			<input class="button right" type="submit" value="Add" id="comment-add">
 		</form>
 	</section>
-
-	<% unless session[:guest].nil? %>
-	<% guest = session[:guest] %>
-	<%= form_for guest, :url => url_for(update_guest_path(guest.id, params[:id])) do |f| %>
-	<section class="party guests">
-		<h2>Your RSVP and Donation</h2>
-		<div class="content-wrapper">
-			<table class="guest-list">
-				<tr>
-					<td class="rsvp">RSVP - <%= f.select :rsvp, [['Yes!', true], ['No!', false]], :selected => (guest.rsvp.blank? ? false : true) %></td>
-					<td class="donation">Donation - $<%= f.number_field :donation %></td>
-					<td class="anonymous">Anonymous Donation? - <%= f.select :anonymous_donation, [['Yes', true], ['No', false]], :selected => (guest.anonymous_donation.blank? ? false : true) %></td>
-				</tr>
-			</table>
-		</div>
-	</section>
-	<%= f.submit 'Update', :class => 'button right' %>
-	<% end %>
-	<% end %>
 </div>
 
 <script type="text/javascript">
@@ -143,9 +126,21 @@ $(function() {
 			url: '/a/guest/party/<%= params[:id] %>',
 			data: { name: name, email: email },
 			success: function(data) {
-				$('#guest-list').html($(data).find('#guest-list').html());
+				$('#guest-list').html(find_or_filter(data, '#guest-list').html());
+
+				if (!$('.party-profile .edit_guest')[0])
+					$(find_or_filter(data, '.edit_guest')).insertAfter('.party.guests');
 			}
 		})
 	});
 });
+
+function find_or_filter(data, selector) {
+	var result = $(data).find(selector);
+
+	if (!result.html())
+		result = $(data).filter(selector);
+
+	return result;
+}
 </script>
